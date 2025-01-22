@@ -20,7 +20,7 @@ const UploadImages = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/upload', // Update with your backend upload endpoint
+        `${process.env.REACT_APP_BACKEND_URL}/admin/images`,
         formData,
         {
           headers: { 'Content-Type': 'multipart/form-data' },
