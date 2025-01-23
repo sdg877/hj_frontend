@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+
 import UploadImages from "./admin/ImageUpload";
 
 function App() {
