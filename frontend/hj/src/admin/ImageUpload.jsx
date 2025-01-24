@@ -4,6 +4,7 @@ import axios from 'axios';
 const ImageUpload = () => {
     const [file, setFile] = useState(null);
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false); // Track upload state
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -15,17 +16,19 @@ const ImageUpload = () => {
             return;
         }
 
+        setLoading(true); // Start loading
+
         const formData = new FormData();
         formData.append('image', file);
 
         try {
-          const response = await axios.post(
-            `${import.meta.env.VITE_BACKEND_URL}/admin/images`, 
-            formData,
-            {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            }
-        );
+            const response = await axios.post(
+                `${import.meta.env.VITE_BACKEND_URL}/admin/images`, 
+                formData,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                }
+            );
 
             if (response.data && response.data.imageUrl) {
                 setMessage(`Image uploaded! URL: ${response.data.imageUrl}`);
@@ -41,12 +44,12 @@ const ImageUpload = () => {
             if (error.response) {
                 setMessage(`Upload failed: ${error.response.status} - ${error.response.data.message || 'Check console for details'}`);
             } else if (error.request) {
-                console.error("Request Error:", error.request);
                 setMessage("Upload failed: No response from server.");
             } else {
-                console.error('Error Message:', error.message);
                 setMessage(`Upload failed: ${error.message}`);
             }
+        } finally {
+            setLoading(false); // Stop loading after upload completes
         }
     };
 
@@ -61,9 +64,12 @@ const ImageUpload = () => {
             />
             <button
                 onClick={handleUpload}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                disabled={loading} // Disable button when loading
+                className={`px-4 py-2 rounded transition ${
+                    loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-700"
+                }`}
             >
-                Upload Image
+                {loading ? "Uploading..." : "Upload Image"}
             </button>
             {message && <p className="mt-4 text-center">{message}</p>}
         </div>
