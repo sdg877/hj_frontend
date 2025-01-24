@@ -1,8 +1,8 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 
 const NewsUpdate = () => {
-  const [newsUpdates, setNewsUpdates] = useState([]); // Default to empty array
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -24,12 +24,14 @@ const NewsUpdate = () => {
       if (response.ok) {
         setTitle("");
         setComment("");
-        alert("News update added successfully!"); // Temporary confirmation
+
+
+        toast.success("News update added successfully!");
       } else {
-        console.error("Failed to add news update");
+        toast.error("Failed to add news update.");
       }
     } catch (error) {
-      console.error("Error:", error);
+      toast.error("Error occurred while adding news update.");
     }
   };
 
@@ -37,7 +39,6 @@ const NewsUpdate = () => {
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Add News Update</h2>
 
-      {/* Form to add a news update */}
       <form onSubmit={handleSubmit} className="mb-6">
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Title</label>
@@ -67,22 +68,18 @@ const NewsUpdate = () => {
         </button>
       </form>
 
-      {/* Prevent errors if newsUpdates is undefined */}
-      {newsUpdates && newsUpdates.length > 0 ? (
-        <ul className="space-y-4">
-          {newsUpdates.map((update, index) => (
-            <li key={index} className="p-4 border rounded-lg bg-gray-50">
-              <h3 className="font-semibold text-lg">{update.title}</h3>
-              {update.comment && <p className="text-gray-700">{update.comment}</p>}
-              <p className="text-sm text-gray-500">
-                {new Date(update.timestamp).toLocaleDateString("en-GB")}
-              </p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-gray-500">No news updates available.</p>
-      )}
+
+      <ToastContainer 
+        position="top-right" 
+        autoClose={5000} 
+        hideProgressBar 
+        newestOnTop 
+        closeOnClick 
+        rtl={false} 
+        pauseOnFocusLoss 
+        draggable 
+        pauseOnHover 
+      />
     </div>
   );
 };
