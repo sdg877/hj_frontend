@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../../App.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -27,23 +28,42 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-container">
+      <h2 className="title">Login</h2>
+
+      <form onSubmit={handleLogin}>
+        <div className="form-group">
+          <label className="label">Username</label>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            className="input-field"
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="label">Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="input-field"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="submit-button"
+        >
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 
