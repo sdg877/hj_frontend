@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import '../../App.css'
 import "react-toastify/dist/ReactToastify.css";
 
 const NewsUpdate = () => {
@@ -42,34 +43,34 @@ const NewsUpdate = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Add News Update</h2>
+    <div className="news-update-container">
+      <h2 className="title">Add News Update</h2>
 
-      <form onSubmit={handleSubmit} className="mb-6">
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Title</label>
+      <form onSubmit={handleSubmit} className="news-form">
+        <div className="form-group">
+          <label className="label">Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            className="w-full p-2 border rounded mt-1 focus:ring focus:ring-blue-300"
+            className="input-field"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Comment</label>
+        <div className="form-group">
+          <label className="label">Comment</label>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             required
-            className="w-full p-2 border rounded mt-1 focus:ring focus:ring-blue-300"
+            className="input-field"
           ></textarea>
         </div>
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="submit-button"
         >
           Add News
         </button>
