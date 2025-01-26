@@ -1,119 +1,93 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ImageUpload = () => {
-  const [file, setFile] = useState(null);
-  const [newFileName, setNewFileName] = useState(""); 
-  const [loading, setLoading] = useState(false); 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [newFileName, setNewFileName] = useState("");
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setSelectedFile(e.target.files[0]);
   };
 
   const handleNameChange = (e) => {
-    setNewFileName(e.target.value); 
+    setNewFileName(e.target.value);
   };
 
   const handleUpload = async () => {
-    if (!file) {
-      toast.error("Please select an image.");
+    if (!selectedFile) {
+      toast.error("Please select a file first.");
       return;
     }
 
-    const timestamp = Date.now();
-    const fileExtension = file.name.split(".").pop(); 
-    const finalFileName = newFileName
-      ? `${newFileName}.${fileExtension}` 
-      : `${timestamp}.${fileExtension}`; 
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Unauthorized: Please log in first.");
+      return;
+    }
 
-    const renamedFile = new File([file], finalFileName, { type: file.type });
+    // Get the file extension
+    const fileExtension = selectedFile.name.split(".").pop();
+    const finalFileName = newFileName
+      ? `${newFileName}.${fileExtension}`
+      : selectedFile.name; // Default to original name if no new name is provided
+
+    // Rename the file
+    const renamedFile = new File([selectedFile], finalFileName, { type: selectedFile.type });
 
     const formData = new FormData();
-    formData.append("image", renamedFile); 
-
-    setLoading(true);
+    formData.append("image", renamedFile);
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/admin/images`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await fetch(`${backendUrl}/admin/images`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
-      if (response.data && response.data.imageUrl) {
-        toast.success(`File uploaded: ${finalFileName}`);
-      } else if (response.data && response.data.message) {
-        toast.warning(response.data.message);
+      if (response.ok) {
+        setSelectedFile(null);
+        setNewFileName(""); // Clear input after success
+        toast.success(`Image uploaded successfully as ${finalFileName}`);
       } else {
-        toast.info("Upload successful, but URL not received. Check backend logs.");
+        const errorData = await response.json();
+        toast.error(errorData.message || "Failed to upload image.");
       }
     } catch (error) {
-      console.error("Upload Error:", error);
-
-      if (error.response) {
-        toast.error(
-          `Upload failed: ${error.response.status} - ${
-            error.response.data.message || "Check console for details"
-          }`
-        );
-      } else if (error.request) {
-        toast.error("Upload failed: No response from server.");
-      } else {
-        toast.error(`Upload failed: ${error.message}`);
-      }
-    } finally {
-      setLoading(false); 
+      toast.error("Error occurred while uploading image.");
     }
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
-      <h1 className="text-2xl font-bold">Upload Images</h1>
+    <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-bold mb-4">Upload Image</h2>
+
       <input
         type="file"
         accept="image/*"
         onChange={handleFileChange}
-        className="border p-2 rounded"
+        className="w-full p-2 border rounded mt-1"
       />
 
-      <div className="mt-4">
-        <input
-          type="text"
-          placeholder="Enter new file name"
-          value={newFileName}
-          onChange={handleNameChange}
-          className="border p-2 rounded"
-        />
-      </div>
+      <input
+        type="text"
+        placeholder="Enter new file name"
+        value={newFileName}
+        onChange={handleNameChange}
+        className="w-full p-2 border rounded mt-2"
+      />
 
       <button
         onClick={handleUpload}
-        disabled={loading} 
-        className={`px-4 py-2 rounded transition ${
-          loading
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-blue-500 text-white hover:bg-blue-700"
-        }`}
+        className="bg-green-600 text-white px-4 py-2 rounded mt-4 hover:bg-green-700"
       >
-        {loading ? "Uploading..." : "Upload Image"}
+        Upload Image
       </button>
 
-  
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar />
     </div>
   );
 };
