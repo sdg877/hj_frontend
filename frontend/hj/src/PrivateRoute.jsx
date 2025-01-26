@@ -1,23 +1,31 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+
 
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
-  if (!token) {
-    return <Navigate to="/login" />;
-  }
+  useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    } else {
+      try {
+        const decodedToken = jwtDecode(token);
+        if (decodedToken.exp * 1000 < Date.now()) {
+          localStorage.removeItem('token');
+          navigate('/login');
+        }
+      } catch (err) {
+        console.error("Invalid or expired token", err);
+        localStorage.removeItem('token');
+        navigate('/login');
+      }
+    }
+  }, [token, navigate]); 
 
-  const decodedToken = jwt_decode(token);
-  const currentTime = Date.now() / 1000;
-
-  if (decodedToken.exp < currentTime) {
-    localStorage.removeItem("token");
-    return <Navigate to="/login" />;
-  }
-
-  return children;
+  return token ? children : null;
 };
 
 export default PrivateRoute;
