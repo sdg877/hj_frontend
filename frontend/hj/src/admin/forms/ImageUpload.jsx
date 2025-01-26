@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import '../../App.css'
 import "react-toastify/dist/ReactToastify.css";
 
 const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newFileName, setNewFileName] = useState("");
+  const [category, setCategory] = useState("");
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
   };
 
   const handleNameChange = (e) => {
@@ -20,6 +26,10 @@ const ImageUpload = () => {
       toast.error("Please select a file first.");
       return;
     }
+    if (!category) {
+      toast.error("Please select a category.");
+      return;
+    }
 
     const token = localStorage.getItem("token");
     if (!token) {
@@ -27,31 +37,33 @@ const ImageUpload = () => {
       return;
     }
 
-    // Get the file extension
     const fileExtension = selectedFile.name.split(".").pop();
     const finalFileName = newFileName
       ? `${newFileName}.${fileExtension}`
-      : selectedFile.name; // Default to original name if no new name is provided
+      : selectedFile.name;
 
-    // Rename the file
-    const renamedFile = new File([selectedFile], finalFileName, { type: selectedFile.type });
+    const renamedFile = new File([selectedFile], finalFileName, {
+      type: selectedFile.type,
+    });
 
     const formData = new FormData();
     formData.append("image", renamedFile);
+    formData.append("category", category);
 
     try {
       const response = await fetch(`${backendUrl}/admin/images`, {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: formData,
       });
 
       if (response.ok) {
         setSelectedFile(null);
-        setNewFileName(""); // Clear input after success
-        toast.success(`Image uploaded successfully as ${finalFileName}`);
+        setNewFileName("");
+        setCategory("");
+        toast.success("Image uploaded successfully!");
       } else {
         const errorData = await response.json();
         toast.error(errorData.message || "Failed to upload image.");
@@ -62,27 +74,40 @@ const ImageUpload = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Upload Image</h2>
+    <div className="image-upload-container">
+      <h2 className="title">Upload Image</h2>
 
       <input
         type="file"
         accept="image/*"
         onChange={handleFileChange}
-        className="w-full p-2 border rounded mt-1"
+        className="file-input"
       />
 
       <input
         type="text"
-        placeholder="Enter new file name"
+        placeholder="Enter new file name (optional)"
         value={newFileName}
         onChange={handleNameChange}
-        className="w-full p-2 border rounded mt-2"
+        className="file-name-input"
       />
+
+      <select
+        value={category}
+        onChange={handleCategoryChange}
+        className="category-select"
+      >
+        <option value="">Select Category</option>
+        <option value="paintings">Paintings</option>
+        <option value="cardsprints">Cards & Prints</option>
+        <option value="sculptures">Sculptures</option>
+        <option value="textiles">Textiles</option>
+        <option value="news">News</option>
+      </select>
 
       <button
         onClick={handleUpload}
-        className="bg-green-600 text-white px-4 py-2 rounded mt-4 hover:bg-green-700"
+        className="upload-button"
       >
         Upload Image
       </button>
