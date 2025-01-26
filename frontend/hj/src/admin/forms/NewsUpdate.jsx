@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
 
 const NewsUpdate = () => {
   const [title, setTitle] = useState("");
@@ -10,6 +10,12 @@ const NewsUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("token"); 
+    if (!token) {
+      toast.error("Unauthorized: Please log in first.");
+      return;
+    }
+
     const newUpdate = { title, comment };
 
     try {
@@ -17,6 +23,7 @@ const NewsUpdate = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`, 
         },
         body: JSON.stringify(newUpdate),
       });
@@ -24,11 +31,10 @@ const NewsUpdate = () => {
       if (response.ok) {
         setTitle("");
         setComment("");
-
-
         toast.success("News update added successfully!");
       } else {
-        toast.error("Failed to add news update.");
+        const errorData = await response.json();
+        toast.error(errorData.message || "Failed to add news update.");
       }
     } catch (error) {
       toast.error("Error occurred while adding news update.");
@@ -56,6 +62,7 @@ const NewsUpdate = () => {
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
+            required
             className="w-full p-2 border rounded mt-1 focus:ring focus:ring-blue-300"
           ></textarea>
         </div>
@@ -68,17 +75,16 @@ const NewsUpdate = () => {
         </button>
       </form>
 
-
-      <ToastContainer 
-        position="top-right" 
-        autoClose={5000} 
-        hideProgressBar 
-        newestOnTop 
-        closeOnClick 
-        rtl={false} 
-        pauseOnFocusLoss 
-        draggable 
-        pauseOnHover 
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
       />
     </div>
   );
