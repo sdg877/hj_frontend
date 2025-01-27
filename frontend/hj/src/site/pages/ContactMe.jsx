@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
+import Spinner from "../../site/components/Spinner"; 
 
 const ContactMe = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const ContactMe = () => {
     email: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false); 
 
   const handleChange = (e) => {
     setFormData({
@@ -17,17 +19,17 @@ const ContactMe = () => {
     });
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
+    setLoading(true);  
+
     const emailData = {
       ...formData, 
       from_name: formData.name,
       from_email: formData.email 
     };
-    
-  
+
     emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -37,20 +39,22 @@ const ContactMe = () => {
       )
       .then(
         (response) => {
-          console.log('Message sent successfully', response);
           toast.success('Message sent successfully!');
+          setLoading(false);  
         },
         (error) => {
           console.error('Error sending message', error);
           toast.error('Error sending message, please try again.');
+          setLoading(false); 
         }
       );
   };
-  
 
   return (
     <div className="contact-form-container">
       <h2 className="title">Contact Me</h2>
+
+      {loading && <Spinner />}
 
       <form onSubmit={handleSubmit} className="form">
         <div>
@@ -90,6 +94,7 @@ const ContactMe = () => {
           <button
             type="submit"
             className="submit-button"
+            disabled={loading}
           >
             Send
           </button>
