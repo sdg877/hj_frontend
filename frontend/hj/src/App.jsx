@@ -7,6 +7,7 @@ import NewsUpdate from "./admin/forms/NewsUpdate";
 import AboutMe from "./site/pages/AboutMe.jsx";
 import ContactMe from "./site/pages/ContactMe.jsx";
 import Gallery from "./site/pages/Gallery.jsx";
+import Sculptures from "./site/components/sculptures.jsx";
 import Homepage from "./site/pages/Homepage.jsx";
 import News from "./site/pages/News.jsx";
 import Login from "./admin/forms/Login.jsx";
@@ -50,6 +51,7 @@ function App() {
           <Route path="/about" element={<AboutMe />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<ContactMe />} />
+          <Route path="/gallery/sculptures" element={<Sculptures />} />
           <Route path="/" element={<Homepage />} />
         </Routes>
       </div>
