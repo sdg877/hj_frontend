@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import '../../App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../../App.css";
 
 const Paintings = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
+        const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/paintings`;
 
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/gallery/paintings`);
+        const response = await axios.get(url);
+
         setImages(response.data.images || []);
         setLoading(false);
       } catch (err) {
