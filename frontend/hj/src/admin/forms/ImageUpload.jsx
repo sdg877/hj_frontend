@@ -52,7 +52,7 @@ const ImageUpload = () => {
     formData.append("image", renamedFile);
     formData.append("category", category);
 
-    setUploading(true); // Show spinner and disable button
+    setUploading(true);
 
     try {
       const response = await fetch(`${backendUrl}/admin/images`, {
@@ -75,7 +75,7 @@ const ImageUpload = () => {
     } catch (error) {
       toast.error("Error occurred while uploading image.");
     } finally {
-      setUploading(false); // Hide spinner and enable button
+      setUploading(false); 
     }
   };
 
