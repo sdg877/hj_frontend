@@ -29,7 +29,12 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2 className="title">Login</h2>
+      <h2 className="title">Admin Login</h2>
+
+      <p className="admin-warning">
+        If you are not the site owner, you are in the wrong place! <br/>
+        Please go to <a href="/">the main site</a>.
+      </p>
 
       <form onSubmit={handleLogin}>
         <div className="form-group">
