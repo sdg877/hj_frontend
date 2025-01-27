@@ -8,6 +8,9 @@ import AboutMe from "./site/pages/AboutMe.jsx";
 import ContactMe from "./site/pages/ContactMe.jsx";
 import Gallery from "./site/pages/Gallery.jsx";
 import Sculptures from "./site/components/sculptures.jsx";
+import Paintings from "./site/components/paintings.jsx";
+import Cardsprints from "./site/components/cardsprints.jsx";
+import Textiles from "./site/components/textiles.jsx";
 import Homepage from "./site/pages/Homepage.jsx";
 import News from "./site/pages/News.jsx";
 import Login from "./admin/forms/Login.jsx";
@@ -48,10 +51,17 @@ function App() {
           />
 
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/sculptures" element={<Sculptures />} />
+          <Route path="/paintings" element={<Paintings />} />
+          <Route path="/cards&prints" element={<Cardsprints />} />
+          <Route path="/textiles" element={<Textiles />} />
+
+
+
           <Route path="/about" element={<AboutMe />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<ContactMe />} />
-          <Route path="/gallery/sculptures" element={<Sculptures />} />
+        
           <Route path="/" element={<Homepage />} />
         </Routes>
       </div>
