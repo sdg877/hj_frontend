@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import '../../App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../../App.css";
 
 const Sculptures = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/gallery/sculptures`);
-        setImages(response.data.images || []); 
+        const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/sculptures`;
+
+        const response = await axios.get(url);
+
+        setImages(response.data.images || []);
         setLoading(false);
       } catch (err) {
         console.error("Error fetching images:", err);
@@ -21,7 +24,7 @@ const Sculptures = () => {
     };
 
     fetchImages();
-  }, []); 
+  }, []);
 
   return (
     <div>
