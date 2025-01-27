@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import '../../App.css'
+import "../../App.css";
+import Spinner from "../../site/components/Spinner";
 import "react-toastify/dist/ReactToastify.css";
 
 const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newFileName, setNewFileName] = useState("");
   const [category, setCategory] = useState("");
+  const [uploading, setUploading] = useState(false); // State to track uploading
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleFileChange = (e) => {
@@ -50,6 +52,8 @@ const ImageUpload = () => {
     formData.append("image", renamedFile);
     formData.append("category", category);
 
+    setUploading(true); // Show spinner and disable button
+
     try {
       const response = await fetch(`${backendUrl}/admin/images`, {
         method: "POST",
@@ -70,6 +74,8 @@ const ImageUpload = () => {
       }
     } catch (error) {
       toast.error("Error occurred while uploading image.");
+    } finally {
+      setUploading(false); // Hide spinner and enable button
     }
   };
 
@@ -82,6 +88,7 @@ const ImageUpload = () => {
         accept="image/*"
         onChange={handleFileChange}
         className="file-input"
+        disabled={uploading}
       />
 
       <input
@@ -90,12 +97,14 @@ const ImageUpload = () => {
         value={newFileName}
         onChange={handleNameChange}
         className="file-name-input"
+        disabled={uploading}
       />
 
       <select
         value={category}
         onChange={handleCategoryChange}
         className="category-select"
+        disabled={uploading}
       >
         <option value="">Select Category</option>
         <option value="paintings">Paintings</option>
@@ -108,9 +117,12 @@ const ImageUpload = () => {
       <button
         onClick={handleUpload}
         className="upload-button"
+        disabled={uploading}
       >
-        Upload Image
+        {uploading ? "Uploading..." : "Upload Image"}
       </button>
+
+      {uploading && <Spinner />} 
 
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar />
     </div>
