@@ -1,33 +1,34 @@
-// Navbar.jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const location = useLocation();
 
+  if (location.pathname.startsWith('/login')) {
+    return null;
+  }
+
   const links = [
     { to: '/', label: 'Home' },
     { to: '/gallery', label: 'Gallery' },
     { to: '/news', label: 'News' },
-    { to: '/about', label: 'About Us' },
-    { to: '/contact', label: 'Contact Us' },
+    { to: '/about', label: 'About' },
+    { to: '/contact', label: 'Contact' },
   ];
 
   return (
     <nav className="navbar">
       <ul className="navbar-list">
         {links.map(({ to, label }) => (
-          to !== location.pathname && (
-            <li key={to} className="navbar-item">
-              <Link to={to} className="navbar-link">
-                {label}
-              </Link>
-            </li>
-          )
+          <li key={to} className="navbar-item">
+            <Link to={to} className="navbar-link">
+              {label}
+            </Link>
+          </li>
         ))}
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;
