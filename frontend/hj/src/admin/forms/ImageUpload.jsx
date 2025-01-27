@@ -8,7 +8,7 @@ const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newFileName, setNewFileName] = useState("");
   const [category, setCategory] = useState("");
-  const [uploading, setUploading] = useState(false); // State to track uploading
+  const [uploading, setUploading] = useState(false); 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleFileChange = (e) => {
