@@ -10,11 +10,12 @@ import ContactMe from "./site/pages/ContactMe.jsx";
 import Gallery from "./site/pages/Gallery.jsx";
 import Sculptures from "./site/components/sculptures.jsx";
 import Paintings from "./site/components/paintings.jsx";
-import Cardsprints from "./site/components/cardsprints.jsx";
+import Cards from "./site/components/cards.jsx";
 import Textiles from "./site/components/textiles.jsx";
 import Homepage from "./site/pages/Homepage.jsx";
 import News from "./site/pages/News.jsx";
 import Login from "./admin/components/Login.jsx";
+import ImageThumbnail from "./admin/components/ImageThumbnail.jsx";
 import PrivateRoute from "./PrivateRoute";
 import Navbar from "../src/site/components/Navbar.jsx";
 
@@ -50,11 +51,19 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/admin/thumnails"
+            element={
+              <PrivateRoute>
+                <ImageThumbnail />
+              </PrivateRoute>
+            }
+          />
 
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/sculptures" element={<Sculptures />} />
           <Route path="/paintings" element={<Paintings />} />
-          <Route path="/cards&prints" element={<Cardsprints />} />
+          <Route path="/cards" element={<Cards />} />
           <Route path="/textiles" element={<Textiles />} />
 
           <Route path="/about" element={<AboutMe />} />
