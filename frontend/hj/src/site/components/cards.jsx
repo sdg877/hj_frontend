@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../App.css";
 
-const Cardsprints = () => {
+const Cards = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -46,4 +46,4 @@ const Cardsprints = () => {
   );
 };
 
-export default Cardsprints;
+export default Cards;
