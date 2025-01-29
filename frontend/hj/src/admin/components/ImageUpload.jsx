@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [newFileName, setNewFileName] = useState("");
   const [category, setCategory] = useState("");
   const [uploading, setUploading] = useState(false); 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -17,10 +16,6 @@ const ImageUpload = () => {
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
-  };
-
-  const handleNameChange = (e) => {
-    setNewFileName(e.target.value);
   };
 
   const handleUpload = async () => {
@@ -39,17 +34,8 @@ const ImageUpload = () => {
       return;
     }
 
-    const fileExtension = selectedFile.name.split(".").pop();
-    const finalFileName = newFileName
-      ? `${newFileName}.${fileExtension}`
-      : selectedFile.name;
-
-    const renamedFile = new File([selectedFile], finalFileName, {
-      type: selectedFile.type,
-    });
-
     const formData = new FormData();
-    formData.append("image", renamedFile);
+    formData.append("image", selectedFile);
     formData.append("category", category);
 
     setUploading(true);
@@ -64,10 +50,10 @@ const ImageUpload = () => {
       });
 
       if (response.ok) {
-        setSelectedFile(null);
-        setNewFileName("");
-        setCategory("");
         toast.success("Image uploaded successfully!");
+        setTimeout(() => {
+          window.location.reload(); // Refresh the page after successful upload
+        }, 2000);
       } else {
         const errorData = await response.json();
         toast.error(errorData.message || "Failed to upload image.");
@@ -88,15 +74,6 @@ const ImageUpload = () => {
         accept="image/*"
         onChange={handleFileChange}
         className="file-input"
-        disabled={uploading}
-      />
-
-      <input
-        type="text"
-        placeholder="Enter new file name (optional)"
-        value={newFileName}
-        onChange={handleNameChange}
-        className="file-name-input"
         disabled={uploading}
       />
 
