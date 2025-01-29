@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ImageThumbnail = () => {
   const [images, setImages] = useState([]);
@@ -13,7 +15,6 @@ const ImageThumbnail = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/admin/thumbnails`
         );
-
         setImages(response.data.images);
       } catch (err) {
         console.error("Error fetching images:", err);
@@ -26,14 +27,12 @@ const ImageThumbnail = () => {
     fetchImages();
   }, []);
 
-  const handleDelete = async (imageKey) => {
-    console.log("Attempting to delete image with key:", imageKey);
+  const handleDelete = async (imageUrl) => { 
 
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
     if (token) {
       try {
-        const decoded = jwtDecode(token);
-        console.log("Decoded Token:", decoded);
+        jwtDecode(token);
       } catch (err) {
         console.error("Invalid Token:", err);
       }
@@ -41,24 +40,33 @@ const ImageThumbnail = () => {
 
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/admin/deleteimage`,
+        `${import.meta.env.VITE_BACKEND_URL}/admin/delete`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          data: { imageKey },
+          data: { imageUrl }, 
         }
       );
 
-      console.log("Delete response:", response);
-
       setImages((prevImages) =>
-        prevImages.filter((img) => img.Key === imageKey)
+        prevImages.filter((img) => img.url !== imageUrl) // Filter by URL
       );
-      alert(response.data.message);
+
+      toast.success(response.data.message);
     } catch (err) {
       console.error("Error deleting image:", err);
-      alert("Failed to delete image");
+      toast.error("Failed to delete image");
+
+      if (err.response) {
+        console.error("Response data:", err.response.data);
+        console.error("Response status:", err.response.status);
+        console.error("Response headers:", err.response.headers);
+      } else if (err.request) {
+        console.error("Request:", err.request);
+      } else {
+        console.error("Error message:", err.message);
+      }
     }
   };
 
@@ -74,23 +82,16 @@ const ImageThumbnail = () => {
         ) : (
           images.map((image, index) => (
             <div key={index} className="image-item">
-              <img
-                src={image.url}
-                alt={`Image ${index}`}
-                className="image-thumbnail"
-                onError={(e) => console.error("Image load error:", e)} // Add onError handler
-              />
+              <img src={image.url} alt={`Image ${index}`} className="image-thumbnail" onError={(e) => console.error("Image load error:", e)} />
               <p className="image-category">{image.category}</p>
-              <button
-                onClick={() => handleDelete(image.Key)}
-                className="delete-button"
-              >
-                Delete
+              <button onClick={() => handleDelete(image.url)} className="delete-button"> 
+                X
               </button>
             </div>
           ))
         )}
       </div>
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     </div>
   );
 };
