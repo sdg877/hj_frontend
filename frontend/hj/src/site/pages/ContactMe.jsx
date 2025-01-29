@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 import Spinner from "../../site/components/Spinner"; 
 
 const ContactMe = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    subject: ''  
   });
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -23,12 +24,13 @@ const ContactMe = () => {
     e.preventDefault();
 
     setLoading(true);  
-    toast.dismiss(); 
+    toast.dismiss();
 
     const emailData = {
-      ...formData, 
+      ...formData,
       from_name: formData.name,
-      from_email: formData.email 
+      from_email: formData.email,
+      subject: formData.subject  
     };
 
     emailjs
@@ -45,7 +47,7 @@ const ContactMe = () => {
             autoClose: 3000,
           });
           setLoading(false);
-          setFormData({ name: '', email: '', message: '' }); 
+          setFormData({ name: '', email: '', message: '', subject: '' }); 
         },
         (error) => {
           console.error('Error sending message', error);
@@ -61,51 +63,63 @@ const ContactMe = () => {
 
   return (
     <div className="contact-form-container">
-      <h2 className="title">Contact Me</h2>
+      <h2 className="contact-form-title">Get In Touch</h2>
 
       {loading && <Spinner />}
 
-      <form onSubmit={handleSubmit} className="form">
-        <div>
-          <label htmlFor="name" className="label">Name:</label>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-field">
+          <label htmlFor="name" className="form-label">Name:</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
             required
-            className="input"
+            className="form-input"
             disabled={loading}
           />
         </div>
-        <div>
-          <label htmlFor="email" className="label">Email:</label>
+        <div className="form-field">
+          <label htmlFor="email" className="form-label">Email:</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
-            className="input"
+            className="form-input"
             disabled={loading}
           />
         </div>
-        <div>
-          <label htmlFor="message" className="label">Message:</label>
+        <div className="form-field">
+          <label htmlFor="subject" className="form-label">Subject:</label>
+          <input
+            type="text"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+            className="form-input"
+            disabled={loading}
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="message" className="form-label">Message:</label>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
             required
             rows="4"
-            className="textarea"
+            className="form-textarea"
             disabled={loading}
           />
         </div>
-        <div>
+        <div className="form-field">
           <button
             type="submit"
-            className="submit-button"
+            className="form-button"
             disabled={loading}
           >
             {loading ? 'Sending...' : 'Send'}
