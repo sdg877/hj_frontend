@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,6 +23,7 @@ import Login from "./admin/components/Login.jsx";
 import ImageThumbnail from "./admin/components/ImageThumbnail.jsx";
 import PrivateRoute from "./PrivateRoute";
 import Navbar from "../src/site/components/Navbar.jsx";
+import DeleteNews from "./admin/components/DeleteNews.jsx";
 
 function App() {
   return (
@@ -59,18 +65,35 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/admin/delete"
+            element={
+              <PrivateRoute>
+                <DeleteNews />
+              </PrivateRoute>
+            }
+          />
 
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/sculptures" element={<Sculptures />} />
           <Route path="/paintings" element={<Paintings />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/textiles" element={<Textiles />} />
-
           <Route path="/about" element={<AboutMe />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<ContactMe />} />
-
           <Route path="/" element={<Homepage />} />
+
+          <Route
+            path="/dashboard/news/:newsId"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>
