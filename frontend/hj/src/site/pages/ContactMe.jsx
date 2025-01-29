@@ -23,6 +23,7 @@ const ContactMe = () => {
     e.preventDefault();
 
     setLoading(true);  
+    toast.dismiss(); 
 
     const emailData = {
       ...formData, 
@@ -39,13 +40,21 @@ const ContactMe = () => {
       )
       .then(
         (response) => {
-          toast.success('Message sent successfully!');
-          setLoading(false);  
+          toast.success('Message sent successfully!', {
+            position: "top-right",
+            autoClose: 3000,
+          });
+          setLoading(false);
+          setFormData({ name: '', email: '', message: '' }); 
         },
         (error) => {
           console.error('Error sending message', error);
-          toast.error('Error sending message, please try again.');
-          setLoading(false); 
+          toast.error('❌ Error sending message, please try again.', {
+            position: "top-right",
+            autoClose: 3000,
+            theme: "colored"
+          });
+          setLoading(false);
         }
       );
   };
@@ -66,6 +75,7 @@ const ContactMe = () => {
             onChange={handleChange}
             required
             className="input"
+            disabled={loading}
           />
         </div>
         <div>
@@ -77,6 +87,7 @@ const ContactMe = () => {
             onChange={handleChange}
             required
             className="input"
+            disabled={loading}
           />
         </div>
         <div>
@@ -88,6 +99,7 @@ const ContactMe = () => {
             required
             rows="4"
             className="textarea"
+            disabled={loading}
           />
         </div>
         <div>
@@ -96,7 +108,7 @@ const ContactMe = () => {
             className="submit-button"
             disabled={loading}
           >
-            Send
+            {loading ? 'Sending...' : 'Send'}
           </button>
         </div>
       </form>
