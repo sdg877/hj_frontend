@@ -11,8 +11,9 @@ const Navbar = () => {
   }
 
   const links = [
-    { to: "/", label: "Home" },
-    { to: "/gallery", label: "Gallery" },
+    { to: "/paintings", label: "Paintings" },
+    { to: "/sculptures", label: "Sculptures" },
+    { to: "/cards", label: "Cards & Prints" },
     { to: "/news", label: "News" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
