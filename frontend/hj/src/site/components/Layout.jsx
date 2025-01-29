@@ -1,25 +1,24 @@
-import React from 'react';
-import '../../App.css'; 
+import React from "react";
+import { useLocation } from "react-router-dom";
+import "../../App.css";
 
-import banner from '../../assets/banner.jpg'; 
+import banner from "../../assets/banner.jpg";
 
 const Layout = ({ children }) => {
+  const location = useLocation();
+
+  const showBanner = location.pathname !== "/";
   return (
     <div>
-      {/* Banner Image */}
-      <div className="banner">
-        <img src={banner} alt="Banner" className="banner-image" />
-      </div>
+      {showBanner && (
+        <div className="banner">
+          <img src={banner} alt="Banner" className="banner-image" />
+        </div>
+      )}
 
-  
-      <nav className="navbar">
+      <nav className="navbar"></nav>
 
-      </nav>
-
-      {/* Page Content */}
-      <div className="content">
-        {children} 
-      </div>
+      <div className="content">{children}</div>
     </div>
   );
 };
