@@ -16,7 +16,7 @@ const Gallery = () => {
               className="gallery-image"
             />
           </Link>
-          <h3 className="gallery-item-title">Cards</h3>
+          <h3 className="gallery-item-title">Cards & Prints</h3>
         </div>
         <div className="gallery-item">
           <Link to="/paintings">
