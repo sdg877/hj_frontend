@@ -88,7 +88,6 @@ const ImageUpload = () => {
         <option value="cards">Cards</option>
         <option value="sculptures">Sculptures</option>
         <option value="textiles">Textiles</option>
-        <option value="news">News</option>
       </select>
 
       <button
