@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../App.css";
+import Spinner from "./Spinner"; 
 
 const Cards = () => {
   const [images, setImages] = useState([]);
@@ -40,9 +41,12 @@ const Cards = () => {
   return (
     <div>
       <h1 className="gallery-title">Cards & Prints</h1>
-      <h5 className='gallery-sub'>Please click on an image to enlarge.</h5>
-      {loading && <p>Loading images...</p>}
+      <h5 className="gallery-sub">Please click on an image to enlarge.</h5>
+
+      {loading && <Spinner />} 
+
       {error && <p>{error}</p>}
+
       <div className="image-gallery">
         {images.length > 0 ? (
           images.map((image, index) => (
@@ -50,12 +54,15 @@ const Cards = () => {
               <img
                 src={image}
                 alt={`Category ${index + 1}`}
-                onClick={() => handleImageClick(image)} 
+                onClick={() => handleImageClick(image)}
+                loading="eager" 
+                onLoad={() => setLoading(false)} 
+                style={loading ? { display: "none" } : {}} 
               />
             </div>
           ))
         ) : (
-          <p>No images available for cardsprints.</p>
+          <p>No images available for cards/prints.</p>
         )}
       </div>
 
