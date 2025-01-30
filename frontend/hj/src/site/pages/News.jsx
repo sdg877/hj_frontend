@@ -43,9 +43,9 @@ const News = () => {
   }
 
   return (
-    <div className="news-container">
-      <h2 className="news-title">Latest News</h2>
-      <div className="news-list">
+    <div className="news-page-container">
+      <h2 className="news-page-title">Latest News</h2>
+      <div className="news-page-list">
         {news.length > 0 ? (
           news.map((newsItem) => (
             <div key={newsItem._id} className="news-item">
