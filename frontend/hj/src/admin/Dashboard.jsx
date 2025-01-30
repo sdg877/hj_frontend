@@ -1,17 +1,29 @@
-import React from 'react'
-import ImageUpload from './forms/ImageUpload'
-import NewsUpdate from './forms/NewsUpdate'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  return (
-    <>
-    <div>
-      <h2>Hi Heather. Welcome To Your Dashboard.</h2>
-      <ImageUpload />
-      <NewsUpdate />
-    </div>
-    </>
-  )
-}
+  const navigate = useNavigate();
 
-export default Dashboard
+  return (
+    <div>
+      <h2 className="dashboard-title">Hi Heather. Welcome To Your Dashboard.
+      </h2>
+      <div className="dashboard-container">
+        <button
+          className="dashboard-button"
+          onClick={() => navigate("/admin/images")}
+        >
+          Images
+        </button>
+        <button
+          className="dashboard-button"
+          onClick={() => navigate("/admin/news")}
+        >
+          News
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
