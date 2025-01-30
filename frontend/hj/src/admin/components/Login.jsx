@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../../App.css'
+import "../../App.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -28,45 +28,49 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2 className="title">Admin Login</h2>
-
+    <div className="login-form-container">
       <p className="admin-warning">
-        If you are not the site owner, you are in the wrong place! <br/>
+        If you are not the site owner, you are in the wrong place! <br /><br />
         Please go to <a href="/">the main site</a>.
+        <br /><br />
       </p>
 
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label className="label">Username</label>
+      <form onSubmit={handleLogin} className="contact-form">
+        <div className="form-field">
+          <label htmlFor="username" className="form-label">
+            Username
+          </label>
           <input
             type="text"
+            name="username"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="input-field"
+            className="form-input"
           />
         </div>
 
-        <div className="form-group">
-          <label className="label">Password</label>
+        <div className="form-field">
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
+            name="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="input-field"
+            className="form-input"
           />
         </div>
 
-        <button
-          type="submit"
-          className="submit-button"
-        >
-          Login
-        </button>
+        <div className="form-field">
+          <button type="submit" className="form-button">
+            Login
+          </button>
+        </div>
       </form>
     </div>
   );
