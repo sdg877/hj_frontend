@@ -6,11 +6,13 @@ const Cards = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [modalActive, setModalActive] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/cardsprints`;
+        const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/cards`;
 
         const response = await axios.get(url);
 
@@ -26,22 +28,42 @@ const Cards = () => {
     fetchImages();
   }, []);
 
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setModalActive(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalActive(false);
+  };
+
   return (
     <div>
-      <h1>Cards & Prints</h1>
+      <h1 className="gallery-title">Cards & Prints</h1>
+      <h5 className='gallery-sub'>Please click on an image to enlarge.</h5>
       {loading && <p>Loading images...</p>}
       {error && <p>{error}</p>}
       <div className="image-gallery">
         {images.length > 0 ? (
           images.map((image, index) => (
             <div key={index} className="image-item">
-              <img src={image} alt={`Category ${index + 1}`} />
+              <img
+                src={image}
+                alt={`Category ${index + 1}`}
+                onClick={() => handleImageClick(image)} 
+              />
             </div>
           ))
         ) : (
           <p>No images available for cardsprints.</p>
         )}
       </div>
+
+      {modalActive && (
+        <div className="modal active" onClick={handleCloseModal}>
+          <img src={selectedImage} alt="Enlarged Category" />
+        </div>
+      )}
     </div>
   );
 };
