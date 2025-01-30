@@ -1,3 +1,5 @@
+// NAVBAR with original logo
+// 
 // import React from "react";
 // import { Link, useLocation } from "react-router-dom";
 // import logoWriting from "../../assets/logo-writing.jpeg";
@@ -42,9 +44,10 @@
 
 // export default Navbar;
 
+
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../../assets/logo.jpeg"; // Keep the original logo
+import logo from "../../assets/logo.jpeg";
 
 const Navbar = () => {
   const location = useLocation();
@@ -53,14 +56,24 @@ const Navbar = () => {
     return null;
   }
 
-  const links = [
-    { to: "/about", label: "About" },
-    { to: "/paintings", label: "Paintings" },
+  const adminLinks = [
     { to: "/sculptures", label: "Sculptures" },
     { to: "/cards", label: "Cards & Prints" },
     { to: "/textiles", label: "Textiles" },
+    { to: "/paintings", label: "Paintings" },
+  ];
+
+  const generalLinks = [
+    { to: "/about", label: "About" },
     { to: "/news", label: "News" },
     { to: "/contact", label: "Contact" },
+  ];
+
+  const isAdmin = location.pathname.startsWith("/admin");
+
+  const links = isAdmin ? adminLinks : [
+    ...adminLinks,
+    ...generalLinks,
   ];
 
   return (
