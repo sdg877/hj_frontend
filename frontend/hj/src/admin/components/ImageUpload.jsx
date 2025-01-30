@@ -52,7 +52,7 @@ const ImageUpload = () => {
       if (response.ok) {
         toast.success("Image uploaded successfully!");
         setTimeout(() => {
-          window.location.reload(); // Refresh the page after successful upload
+          window.location.reload();
         }, 2000);
       } else {
         const errorData = await response.json();
