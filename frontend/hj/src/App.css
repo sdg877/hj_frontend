@@ -212,16 +212,6 @@ body {
   padding: 20px;
 }
 
-.news-item {
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .news-page-container {
   display: flex;
   flex-direction: column;
@@ -310,12 +300,6 @@ body {
 .gallery-container {
   text-align: center;
   padding: 20px;
-}
-
-.gallery-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
 }
 
 .gallery-grid {
@@ -640,10 +624,6 @@ body {
   border: 1px solid #ddd;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.container {
-  padding: 1rem;
 }
 
 .about-me-container {
