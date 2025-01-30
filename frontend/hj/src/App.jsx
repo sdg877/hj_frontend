@@ -21,7 +21,7 @@ import Textiles from "./site/components/textiles.jsx";
 import Homepage from "./site/pages/Homepage.jsx";
 import News from "./site/pages/News.jsx";
 import Login from "./admin/components/Login.jsx";
-import ImageThumbnail from "./admin/components/ImageThumbnail.jsx";
+import DeleteImages from "./admin/components/DeleteImages.jsx";
 import PrivateRoute from "./PrivateRoute";
 import Navbar from "../src/site/components/Navbar.jsx";
 import DeleteNews from "./admin/components/DeleteNews.jsx";
@@ -82,7 +82,7 @@ function AppRoutes() {
           path="/admin/thumbnails"
           element={
             <PrivateRoute>
-              <ImageThumbnail />
+              <DeleteImages />
             </PrivateRoute>
           }
         />
