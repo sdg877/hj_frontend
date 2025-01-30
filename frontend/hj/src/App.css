@@ -141,14 +141,14 @@ body {
 
 .image-gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 120px 4px;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 150px 0px;
   justify-items: center;
 }
 
 .image-gallery .image-item {
-  width: 250px;
-  height: 250px;
+  width: 100%; 
+  aspect-ratio: 1; 
   overflow: hidden;
   position: relative;
 }
@@ -156,7 +156,7 @@ body {
 .image-gallery .image-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; 
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -165,6 +165,8 @@ body {
 .image-gallery .image-item img:hover {
   transform: scale(1.05);
 }
+
+
 
 .gallery-title {
   text-align: center;
@@ -181,26 +183,26 @@ body {
 
 /* Modal Styles */
 .modal {
-  display: none; /* Hidden by default */
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
 .modal img {
-  max-width: 90%; /* Limit the image size */
-  max-height: 90%; /* Limit the image size */
+  max-width: 90%; 
+  max-height: 90%; 
   border-radius: 8px;
 }
 
 .modal.active {
-  display: flex; /* Show modal when active */
+  display: flex; 
 }
 
 .news-container {
@@ -240,16 +242,16 @@ body {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(24, 43, 132, 0.2); /* R24 G43 B132 */
+  box-shadow: 0 6px 12px rgba(24, 43, 132, 0.2); 
   margin-bottom: 20px;
   text-align: left;
-  border-left: 5px solid rgb(116, 30, 30); /* R116 G30 B30 */
+  border-left: 5px solid rgb(116, 30, 30); 
 }
 
 .news-item-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: rgb(116, 30, 30); /* R116 G30 B30 */
+  color: rgb(116, 30, 30);
   margin-bottom: 10px;
 }
 
@@ -262,7 +264,7 @@ body {
 
 .news-item-date {
   font-size: 0.9rem;
-  color: rgb(24, 43, 132); /* R24 G43 B132 */
+  color: rgb(24, 43, 132); 
   font-style: italic;
 }
 
@@ -346,8 +348,8 @@ body {
 .logo-container {
   display: flex;
   align-items: center;
-  justify-content: center; /* This centers the items horizontally */
-  gap: 10px; /* Adds spacing between the logo and logo writing */
+  justify-content: center; 
+  gap: 10px; 
 }
 
 /* Adjustments for the logo writing */
@@ -669,6 +671,7 @@ body {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  color: #741e1e;
 }
 
 .about-me-content {
@@ -693,7 +696,7 @@ body {
   max-width: 60%;
   font-size: 1.25rem;
   line-height: 1.75;
-  color: #4b5563;
+  color: #741e1e;
   text-align: justify;
 }
 
