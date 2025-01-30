@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ImageUpload from "./components/ImageUpload";
-import ImageThumbnail from "./components/ImageThumbnail";
+import DeleteImages from "./components/DeleteImages";
 
 const ImageDashboard = () => {
   return (
@@ -11,7 +11,7 @@ const ImageDashboard = () => {
         <ImageUpload />
       </div>
       <div className="section-box">
-        <ImageThumbnail />
+        <DeleteImages />
       </div>
       <div className="button-container">
         <Link to="/admin/news">
