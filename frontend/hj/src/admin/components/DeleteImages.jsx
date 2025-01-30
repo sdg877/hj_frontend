@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ImageThumbnail = () => {
+const DeleteImages = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -75,7 +75,7 @@ const ImageThumbnail = () => {
 
   return (
     <div>
-      <h2>Image Thumbnails</h2>
+      <h2>Delete Images</h2>
       <div className="image-grid">
         {images.length === 0 ? (
           <p>No images available.</p>
@@ -96,4 +96,4 @@ const ImageThumbnail = () => {
   );
 };
 
-export default ImageThumbnail;
+export default DeleteImages;
