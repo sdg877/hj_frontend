@@ -8,6 +8,8 @@ import {
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./admin/Dashboard.jsx";
+import NewsDashboard from "./admin/NewsDashboard.jsx";
+import ImageDashboard from "./admin/ImageDashboard.jsx";
 import UploadImages from "./admin/components/ImageUpload.jsx";
 import NewsUpdate from "./admin/components/NewsUpdate.jsx";
 import AboutMe from "./site/pages/AboutMe.jsx";
@@ -56,6 +58,14 @@ function AppRoutes() {
           path="/admin/images"
           element={
             <PrivateRoute>
+              <ImageDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/addimages"
+          element={
+            <PrivateRoute>
               <UploadImages />
             </PrivateRoute>
           }
@@ -64,7 +74,7 @@ function AppRoutes() {
           path="/admin/news"
           element={
             <PrivateRoute>
-              <NewsUpdate />
+              <NewsDashboard />
             </PrivateRoute>
           }
         />
@@ -73,6 +83,14 @@ function AppRoutes() {
           element={
             <PrivateRoute>
               <ImageThumbnail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/addnews"
+          element={
+            <PrivateRoute>
+              <NewsUpdate />
             </PrivateRoute>
           }
         />
