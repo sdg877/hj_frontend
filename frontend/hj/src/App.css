@@ -78,7 +78,6 @@ body {
   margin-bottom: 6px;
 }
 
-
 .navbar {
   position: fixed;
   top: 0;
@@ -112,12 +111,7 @@ body {
   font-size: 18px;
   font-weight: 600;
   padding: 5px 10px;
-  background: linear-gradient(
-    to right,
-    rgb(19, 128, 157),
-    rgb(24, 43, 132),
-    rgb(116, 30, 30)
-  );
+  background: rgb(19, 128, 157);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -136,46 +130,81 @@ body {
 }
 
 .logo-writing {
-  height: 80px; /* Adjust as needed */
+  font-family: "Playwrite VN", cursive;
+  font-size: 2rem;
+  color: #000;
 }
 
 .logo {
   height: 70px; /* Adjust as needed */
 }
 
-
-/* Gallery Section Styles */
 .image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 120px 4px; 
+  justify-items: center;
 }
 
-.image-item {
-  flex: 1 1 calc(33.33% - 20px);
-  max-width: calc(33.33% - 20px);
-  box-sizing: border-box;
+.image-gallery .image-item {
+  width: 250px;
+  height: 250px; 
+  overflow: hidden; 
+  position: relative;
 }
 
-.image-item img {
+.image-gallery .image-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover; 
   border-radius: 8px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  cursor: pointer; 
+  transition: transform 0.3s ease; 
 }
 
-.image-item img:hover {
-  transform: scale(1.05);
+.image-gallery .image-item img:hover {
+  transform: scale(1.05); 
 }
 
-/* Responsive Image Sizes */
-@media (max-width: 768px) {
-  .image-gallery {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
+.gallery-title {
+  text-align: center;
+  padding: 25px;
+  padding-bottom: 8px;
 }
+
+.gallery-sub {
+  text-align: center;
+  font-size: 18px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal img {
+  max-width: 90%; /* Limit the image size */
+  max-height: 90%; /* Limit the image size */
+  border-radius: 8px;
+}
+
+.modal.active {
+  display: flex; /* Show modal when active */
+}
+
+
+
 
 .news-container {
   display: flex;
@@ -196,14 +225,58 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.news-item h3 {
+.news-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  background-color: #f5f5f5;
+}
+
+.news-page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(116, 30, 30); /* R116 G30 B30 */
+  margin-bottom: 20px;
+}
+
+.news-page-list {
+  width: 100%;
+  max-width: 900px;
+}
+
+.news-item {
+  width: 100%;
+  max-width: 900px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(24, 43, 132, 0.2); /* R24 G43 B132 */
+  margin-bottom: 20px;
+  text-align: left;
+  border-left: 5px solid rgb(116, 30, 30); /* R116 G30 B30 */
+}
+
+.news-item-title {
   font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(116, 30, 30); /* R116 G30 B30 */
   margin-bottom: 10px;
 }
 
-.news-item p {
+.news-item-comment {
   font-size: 1rem;
-  color: #555;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.news-item-date {
+  font-size: 0.9rem;
+  color: rgb(24, 43, 132); /* R24 G43 B132 */
+  font-style: italic;
 }
 
 .spinner-container {
@@ -298,22 +371,21 @@ body {
 
 /* Adjustments for the logo writing */
 .homepage-logo-writing {
-  width: 300px; 
+  width: 300px;
   height: auto;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 /* Adjustments for the logo */
 .homepage-logo {
-  width: 75px; 
+  width: 75px;
   height: 75px;
 }
-
 
 /* Home Page Image Gallery */
 .image-gallery-homepage {
   display: flex;
-  justify-content: space-evenly;  /* Distribute the images evenly across the page */
+  justify-content: space-evenly; 
   gap: 20px;
   margin: 30px 0;
 }
@@ -335,52 +407,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Full-Size Image Gallery (2 per row) */
-.image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;  /* Ensure even spacing between items */
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.image-item {
-  flex: 1 1 calc(48% - 20px);  /* Ensures 2 items per row with space between them */
-  max-width: calc(48% - 20px);
-  margin-bottom: 20px;
-}
-
-.image-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.image-item img:hover {
-  transform: scale(1.05);
-}
-
-/* Responsive Design for Image Gallery */
-@media (max-width: 768px) {
-  .image-gallery {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .image-item {
-    max-width: 80%;
-    margin: 10px 0;
-  }
-
-  .image-gallery-homepage {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-
 .about-link {
   display: block;
   margin-top: 40px;
@@ -391,15 +417,6 @@ body {
 
 .arrow {
   font-size: 4rem;
-}
-
-
-.image-gallery {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 20px;
-  width: 90%;
-  max-width: 1500px;
 }
 
 .image-item {
@@ -431,45 +448,31 @@ body {
   }
 }
 
-
 .content-container {
   position: relative;
   padding: 20px;
-  /* Add any other styles for the content container */
 }
 
 .login-container {
   text-align: center;
 }
 
-/* App.css */
-
 /* Grid layout for image thumbnails */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(150px, 1fr)
-  ); /* Ensures tighter spacing */
-  gap: 0.5rem; /* Reduces space between items */
-  justify-content: center; /* Ensures everything stays centered */
-}
-
-.image-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 0.5rem;
+  justify-items: center; 
 }
 
 .image-thumbnail {
   width: 100%;
-  height: 10rem;
+  height: 15rem;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 0.1rem; /* Minimal spacing */
+  margin-bottom: 0.1rem;
 }
+
 
 .image-category {
   font-size: 0.9rem;
@@ -559,6 +562,20 @@ body {
   cursor: not-allowed;
 }
 
+.login-form-container {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px; /* Adjust the width as needed */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Toast Notification Styling */
 .Toastify__toast {
@@ -567,33 +584,69 @@ body {
   border-radius: 6px;
 }
 
+.layout-container {
+  display: grid;
+  grid-template-rows: var(--navbar-height) 250px 1fr; /* Use CSS variable for navbar height */
+  min-height: 100vh;
+  width: 100%;
+}
+
 .banner {
-  width: 100vw; /* full viewport width */
-  height: 150px; /* adjust height as needed */
+  width: 100vw;
+  height: 250px;
   overflow: hidden;
   position: relative;
-  
 }
 
 .banner-image {
-  width: 100%; /* Ensure the image stretches to the full width */
-  height: 100%; /* Make sure the image fills the height of the banner */
-  object-fit: cover; /* Maintain aspect ratio, crop as needed */
-}
-
-
-/* Navbar Styling - white background */
-.navbar {
-  background-color: white;  /* White background for the navbar */
-  color: rgb(19, 128, 157);  /* Color for the text or navbar items */
-  padding: 15px;
-  text-align: center;
-  font-weight: bold;
-  border-top: 1px solid rgb(116, 30, 30);  /* Optional: border for contrast */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Page Content Styling */
 .content {
   padding: 20px;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; 
+}
+
+.dashboard-button {
+  background-color: rgb(19, 128, 157);
+  color: white;
+  font-size: 30px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.navigate-button {
+  background-color: rgb(19, 128, 157);
+  color: white;
+  align-items: center;
+}
+
+.dashboard-title {
+  text-align: center;
+  display: block;
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.section-box {
+  padding: 1rem; 
+  margin-bottom: 1rem; 
+  border: 1px solid #ddd; 
+  border-radius: 0.5rem; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  padding: 1rem; 
 }
