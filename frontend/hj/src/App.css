@@ -139,32 +139,49 @@ body {
   height: 70px; /* Adjust as needed */
 }
 
-.image-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 150px 0px;
-  justify-items: center;
+.gallery-error, .gallery-empty {
+  text-align: center;
+  color: red; /* Example for error message */
 }
 
-.image-gallery .image-item {
-  width: 100%; 
-  aspect-ratio: 1; 
-  overflow: hidden;
-  position: relative;
+.custom-carousel { /* Custom class for the carousel */
+  width: 80%; /* Adjust as needed */
+  margin: 20px auto; /* Center the carousel */
 }
 
-.image-gallery .image-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+.carousel-image-container {
+  width: 500px;  /* Desired width */
+  margin: 0 auto; /* Center the image container */
+  padding: 20px; /* Add some padding around the image */
 }
 
-.image-gallery .image-item img:hover {
-  transform: scale(1.05);
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* Optional: Add rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
+
+/* Adjust transition speed */
+.carousel .slide {
+  transition: opacity 1s ease-in-out !important; /* Adjust duration as needed */
+}
+.carousel .carousel-inner {
+    transition: transform 1s ease-in-out !important; /* Adjust duration as needed */
+}
+
+/* Optional: Style the carousel indicators (dots) */
+.carousel .carousel-indicators li {
+  background-color: rgba(0, 0, 0, 0.2); /* Example */
+}
+
+.carousel .carousel-indicators li.active {
+  background-color: rgba(0, 0, 0, 0.8); /* Example */
+}
+
+
+
 
 
 
@@ -721,4 +738,9 @@ body {
 
 .image-container.left {
   order: 1;
+}
+
+* {
+  animation: none !important;
+  transition: none !important;
 }
