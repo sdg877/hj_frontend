@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const showContent = location.pathname !== "/" && location.pathname !== "/login";
+  const showContent = location.pathname !== "/login";
   const navbarRef = useRef(null); 
 
   useEffect(() => {
