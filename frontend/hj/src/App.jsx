@@ -39,10 +39,9 @@ function App() {
 
 function AppRoutes() {
   const location = useLocation(); 
-
   return (
     <div className="App">
-      {location.pathname !== "/" && <Navbar />}
+
 
       <Routes>
         <Route path="/login" element={<Login />} />
