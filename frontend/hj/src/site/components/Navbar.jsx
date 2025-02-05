@@ -61,6 +61,7 @@ const Navbar = () => {
     { to: "/cards", label: "Cards & Prints" },
     { to: "/textiles", label: "Textiles" },
     { to: "/paintings", label: "Paintings" },
+    { to: "/news", label: "News" }
   ];
 
   const generalLinks = [
