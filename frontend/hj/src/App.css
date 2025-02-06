@@ -10,29 +10,12 @@ body {
   width: 100%;
 }
 
-.container {
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  margin: 0 auto;
-}
-
-.title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 .input-field,
 .file-input,
 .file-name-input,
 .category-select {
   width: 100%;
-  padding: 12px;
+  padding: 18px;
   margin-top: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -72,12 +55,6 @@ body {
   margin-bottom: 16px;
 }
 
-.label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 6px;
-}
-
 .navbar {
   position: fixed;
   top: 0;
@@ -92,16 +69,14 @@ body {
   padding: 10px 20px;
 }
 
-/* Left-aligned navigation links */
 .navbar-list {
   display: flex;
-  gap: 20px; /* Adds space between links */
+  gap: 20px; 
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-/* Style for each link */
 .navbar-item {
   list-style-type: none;
 }
@@ -115,32 +90,79 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
 }
 
 .navbar-link:hover {
-  font-size: 20px;
-  transition: font-size 0.3s ease;
-}
-
-/* Right-aligned logo and text */
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  transform: scale(1.1);
 }
 
 .logo-writing {
-  font-size: 2rem;
+  font-size: 3rem;
   color: rgb(24, 43, 132);;
 }
-
 
 .gallery-error, .gallery-empty {
   text-align: center;
   color: red; 
 }
 
-.custom-carousel { 
+.custom-carousel {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.carousel-image-container {
+  /* Remove flexbox */
+  margin: 0 auto; /* Center the container */
+  overflow: hidden; /* Prevents image from overflowing container */
+}
+
+.carousel-image {
+  width: auto !important;
+  max-width: 75% !important;
+  max-height: 10vh !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.carousel .thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px; /* Add a little space above thumbnails */
+}
+
+.carousel .thumb {
+  width: 70px;
+  height: 50px;
+  object-fit: cover; /* Good for thumbnails */
+  border-radius: 5px;
+  cursor: pointer; /* Indicate that they are clickable */
+}
+
+/* Optional: Style the "dot" indicators */
+.carousel .dot {
+    background-color: gray; /* Change the color */
+    width: 10px; /* Make the dots larger */
+    height: 10px;
+    border-radius: 50%; /* Make them circles */
+    margin: 0 5px; /* Adjust spacing between dots */
+    display: inline-block; /* Ensure they are inline */
+    cursor: pointer; /* Make them clickable */
+}
+
+.carousel .dot.active {
+    background-color: blue; /* Change the color of the active dot */
+}
+
+.gallery-title { /* Example styling */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* .custom-carousel { 
   width: 80%; 
   margin: 20px auto; 
 }
@@ -152,34 +174,28 @@ body {
 }
 
 .carousel-image {
-  max-width: 100%;
+  max-width: 75%;
   height: auto;
   display: block;
   border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
-/* Adjust transition speed */
 .carousel .slide {
-  transition: opacity 1s ease-in-out !important; /* Adjust duration as needed */
+  transition: opacity 1s ease-in-out !important; 
 }
 .carousel .carousel-inner {
-    transition: transform 1s ease-in-out !important; /* Adjust duration as needed */
+    transition: transform 1s ease-in-out !important; 
 }
 
-/* Optional: Style the carousel indicators (dots) */
+
 .carousel .carousel-indicators li {
-  background-color: rgba(0, 0, 0, 0.2); /* Example */
-}
+  background-color: rgba(0, 0, 0, 0.2); 
+} */
 
 .carousel .carousel-indicators li.active {
-  background-color: rgba(0, 0, 0, 0.8); /* Example */
+  background-color: rgba(0, 0, 0, 0.8); 
 }
-
-
-
-
-
 
 .gallery-title {
   text-align: center;
@@ -194,29 +210,7 @@ body {
   padding-top: 10px;
 }
 
-/* Modal Styles */
-.modal {
-  display: none; 
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
 
-.modal img {
-  max-width: 90%; 
-  max-height: 90%; 
-  border-radius: 8px;
-}
-
-.modal.active {
-  display: flex; 
-}
 
 .news-container {
   display: flex;
@@ -240,7 +234,6 @@ body {
 .news-page-title {
   font-size: 2rem;
   font-weight: bold;
-  color: rgb(116, 30, 30); /* R116 G30 B30 */
   margin-bottom: 20px;
 }
 
@@ -264,7 +257,6 @@ body {
 .news-item-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: rgb(116, 30, 30);
   margin-bottom: 10px;
 }
 
@@ -277,7 +269,6 @@ body {
 
 .news-item-date {
   font-size: 0.9rem;
-  color: rgb(24, 43, 132); 
   font-style: italic;
 }
 
@@ -312,73 +303,12 @@ body {
   }
 }
 
-.gallery-container {
-  text-align: center;
-  padding: 20px;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-.gallery-item {
-  text-align: center;
-}
-
-.gallery-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.gallery-item-title {
-  margin-top: 10px;
-  font-size: 1.25rem;
-}
-
-/* Responsive Design */
-@media (min-width: 640px) {
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
 .homepage-container {
   text-align: center;
   background-color: white;
 }
 
-/* Flex container for logo and logo writing */
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  gap: 10px; 
-}
 
-/* Adjustments for the logo writing */
-.homepage-logo-writing {
-  width: 300px;
-  height: auto;
-  margin-top: 10px;
-}
-
-/* Adjustments for the logo */
-.homepage-logo {
-  width: 75px;
-  height: 75px;
-}
-
-/* Home Page Image Gallery */
 .image-gallery-homepage {
   display: flex;
   justify-content: space-evenly;
@@ -392,7 +322,7 @@ body {
 }
 
 .image-item-homepage img {
-  width: 100%;
+  width: 75%;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
@@ -403,17 +333,6 @@ body {
   transform: scale(1.05);
 }
 
-.about-link {
-  display: block;
-  margin-top: 40px;
-  font-size: 2rem;
-  color: rgb(19, 128, 157);
-  text-decoration: none;
-}
-
-.arrow {
-  font-size: 4rem;
-}
 
 .image-item {
   flex: 1;
@@ -432,17 +351,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .image-gallery {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .image-item {
-    max-width: 80%;
-  }
-}
 
 .content-container {
   position: relative;
@@ -453,7 +361,6 @@ body {
   text-align: center;
 }
 
-/* Grid layout for image thumbnails */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -492,7 +399,6 @@ body {
   background-color: darkred;
 }
 
-/* Contact Form Styles */
 .contact-form-container {
   max-width: 500px;
   margin: 0 auto;
@@ -502,11 +408,18 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-title {
-  font-size: 24px;
-  font-weight: 600;
+ .contact-title {
   text-align: center;
+  font-size: 1.2rem;
+  margin: 15px;
   margin-bottom: 20px;
+  
+}
+
+.contact-email {
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
 }
 
 .form {
@@ -546,6 +459,8 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto; /* Centers the button horizontally */
 }
 
 .form-button:hover {
@@ -663,7 +578,7 @@ body {
   display: flex;
   align-items: center;
   gap: 2rem;
-  flex-wrap: wrap; /* Ensures content is responsive */
+  flex-wrap: wrap; 
 }
 
 .text-image-container.left {
@@ -684,7 +599,6 @@ body {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #741e1e;
 }
 
 .about-me-content {
@@ -709,7 +623,6 @@ body {
   max-width: 60%;
   font-size: 1.25rem;
   line-height: 1.75;
-  color: #741e1e;
   text-align: justify;
 }
 
