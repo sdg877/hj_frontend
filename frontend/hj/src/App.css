@@ -1,5 +1,5 @@
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Questrial", sans-serif;
   background-color: #f4f4f4;
   color: #333;
   margin: 0;
@@ -130,36 +130,32 @@ body {
 }
 
 .logo-writing {
-  font-family: "Playwrite VN", cursive;
   font-size: 2rem;
-  color: #000;
+  color: rgb(24, 43, 132);;
 }
 
-.logo {
-  height: 70px; /* Adjust as needed */
-}
 
 .gallery-error, .gallery-empty {
   text-align: center;
-  color: red; /* Example for error message */
+  color: red; 
 }
 
-.custom-carousel { /* Custom class for the carousel */
-  width: 80%; /* Adjust as needed */
-  margin: 20px auto; /* Center the carousel */
+.custom-carousel { 
+  width: 80%; 
+  margin: 20px auto; 
 }
 
 .carousel-image-container {
-  width: 500px;  /* Desired width */
-  margin: 0 auto; /* Center the image container */
-  padding: 20px; /* Add some padding around the image */
+  width: 500px;  
+  margin: 0 auto; 
+  padding: 20px; 
 }
 
 .carousel-image {
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px; /* Optional: Add rounded corners */
+  border-radius: 8px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
