@@ -18,7 +18,6 @@ const Navbar = () => {
 
   const generalLinks = [
     { to: "/about", label: "About" },
-    { to: "/news", label: "News" },
     { to: "/contact", label: "Contact" },
   ];
 
