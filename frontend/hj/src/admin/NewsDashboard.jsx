@@ -67,7 +67,7 @@ const NewsDashboard = () => {
       <ToastContainer />
       <div className="button-container">
         <Link to="/admin/images">
-          <button className="navigate-button">Go to Image Dashboard</button>
+          <button className="dashboard-button-small">Go to Image Dashboard</button>
         </Link>
       </div>
     </div>
