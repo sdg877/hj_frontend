@@ -317,7 +317,7 @@ body {
 }
 
 .edit-news-form .navigate-button {
-  background-color: rgb(19, 128, 157); /* Same color as navbar-link */
+  background-color: rgb(19, 128, 157); 
   color: white;
   border: none;
   padding: 12px 12px;
@@ -328,13 +328,13 @@ body {
   box-sizing: border-box;
 }
 
-.edit-news-form .navigate-button:hover {
-  background-color: #0056b3; /* Match hover color */
-}
-
 .edit-news-form .navigate-button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+
+.button-container {
+  align-items: center;
 }
 
 .spinner-container {
@@ -613,6 +613,24 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.dashboard-button-small {
+  background-color: rgb(19, 128, 157);
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto; 
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100vh; 
 }
 
 .dashboard-button {
