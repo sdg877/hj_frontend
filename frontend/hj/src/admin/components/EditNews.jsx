@@ -60,29 +60,52 @@ const EditNews = ({ newsItem, onNewsUpdate }) => {
   };
 
   return (
-    <div>
+    <div className="edit-news-form">
       {editMode ? (
-        <div>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button onClick={handleSaveClick} disabled={loading}>
-            Save
-          </button>
-          <button onClick={handleCancelClick} disabled={loading}>
-            Cancel
-          </button>
+        <div className="edit-form">
+          <div className="form-group">
+            <label htmlFor="title">Title</label>
+            <input
+              id="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="comment">Comment</label>
+            <textarea
+              id="comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              className="form-textarea"
+            />
+          </div>
+          <div className="button-group">
+            <button
+              className="admin-button"
+              onClick={handleSaveClick}
+              disabled={loading}
+            >
+              Save
+            </button>
+            <button
+              className="admin-button"
+              onClick={handleCancelClick}
+              disabled={loading}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       ) : (
-        <div>
-          <button onClick={handleEditClick}>Edit</button>
-        </div>
+        <button
+          className="admin-button"
+          onClick={handleEditClick}
+        >
+          Edit
+        </button>
       )}
     </div>
   );
