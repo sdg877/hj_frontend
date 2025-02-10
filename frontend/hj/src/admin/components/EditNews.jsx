@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-const EditNews = ({ newsItem, onNewsUpdate }) => {
+const EditNews = ({ newsItem, onNewsUpdate, onDelete }) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [editMode, setEditMode] = useState(false);
   const [title, setTitle] = useState(newsItem.title);
@@ -59,6 +59,10 @@ const EditNews = ({ newsItem, onNewsUpdate }) => {
     }
   };
 
+  const handleDeleteClick = () => {
+    onDelete(newsItem._id);
+  };
+
   return (
     <div className="edit-news-form">
       {editMode ? (
@@ -100,12 +104,14 @@ const EditNews = ({ newsItem, onNewsUpdate }) => {
           </div>
         </div>
       ) : (
-        <button
-          className="admin-button"
-          onClick={handleEditClick}
-        >
-          Edit
-        </button>
+        <div>
+          <button
+            className="admin-button"
+            onClick={handleEditClick}
+          >
+            Edit
+          </button>
+        </div>
       )}
     </div>
   );
