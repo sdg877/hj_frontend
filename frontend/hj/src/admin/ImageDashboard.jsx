@@ -13,9 +13,9 @@ const ImageDashboard = () => {
       <div className="section-box">
         <DeleteImages />
       </div>
-      <div className="button-container">
+      <div>
         <Link to="/admin/news">
-          <button className="navigate-button">Go to News Dashboard</button>
+          <button className="dashboard-button-small">Go to News Dashboard</button>
         </Link>
       </div>
     </div>
