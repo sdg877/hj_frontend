@@ -11,7 +11,6 @@ const NewsDashboard = () => {
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [newsUpdated, setNewsUpdated] = useState(false);
 
   const fetchNews = async () => {
     setLoading(true);
@@ -40,33 +39,29 @@ const NewsDashboard = () => {
       setError(err.message);
     } finally {
       setLoading(false);
-      setNewsUpdated(false);
     }
   };
 
   useEffect(() => {
     fetchNews();
-
-    const interval = setInterval(() => {
-      fetchNews();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [backendUrl, newsUpdated]);
+  }, [backendUrl]);
 
   return (
     <div className="container">
       <h2 className="news-page-title">News Management</h2>
       <div className="section-box">
-        <NewsUpdate onNewsAdded={() => setNewsUpdated(true)} />
+        <NewsUpdate onNewsAdded={fetchNews} />
       </div>
       {loading && <div>Loading news...</div>}
       {error && <div>Error: {error}</div>}
       {newsItems.map((newsItem) => (
         <div key={newsItem._id} className="section-box">
           <h3 className="news-item-title">{newsItem.title}</h3>
-          <EditNews newsItem={newsItem} onNewsUpdate={() => setNewsUpdated(true)} />
-          <DeleteNews newsItem={newsItem} refreshNews={() => setNewsUpdated(true)} />
+          <p className="news-item-comment">{newsItem.comment}</p>
+          <div className="admin-buttons">
+            <EditNews newsItem={newsItem} onNewsUpdate={fetchNews} />
+            <DeleteNews newsItem={newsItem} refreshNews={fetchNews} />
+          </div>
         </div>
       ))}
       <ToastContainer />
