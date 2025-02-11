@@ -9,9 +9,6 @@ const DeleteImages = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(0);
-  const [loadingMessage, setLoadingMessage] = useState(
-    "Please wait while your images are loading..."
-  );
   const [error, setError] = useState(null);
 
   useEffect(() => {
