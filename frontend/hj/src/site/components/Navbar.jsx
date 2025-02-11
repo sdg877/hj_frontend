@@ -42,7 +42,7 @@ const Navbar = () => {
         )}
       </ul>
       <div className="logo-container">
-        <div className="logo-writing">h treharnejones</div>
+        <div className="logo-writing">heather treharne jones</div>
       </div>
     </nav>
   );
