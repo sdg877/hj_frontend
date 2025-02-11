@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const DeleteNews = ({ newsItem, refreshNews }) => {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const DeleteNews = ({ newsItem, onNewsUpdate }) => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL; 
   const [loading, setLoading] = useState(false);
 
-  const handleDelete = async () => {
+  const handleDeleteClick = async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
@@ -29,7 +29,7 @@ const DeleteNews = ({ newsItem, refreshNews }) => {
       }
 
       toast.success("News deleted successfully!");
-      refreshNews();
+      onNewsUpdate();
     } catch (error) {
       console.error("Delete error:", error);
       toast.error(error.message);
@@ -39,15 +39,9 @@ const DeleteNews = ({ newsItem, refreshNews }) => {
   };
 
   return (
-    <div>
-      <button
-        onClick={handleDelete}
-        disabled={loading}
-        className="delete-button"
-      >
-        X
-      </button>
-    </div>
+    <button className="delete-button" onClick={handleDeleteClick} disabled={loading}>
+      X
+    </button>
   );
 };
 
