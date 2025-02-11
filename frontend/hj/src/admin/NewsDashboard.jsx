@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import EditNews from "./components/EditNews";
 import DeleteNews from "./components/DeleteNews";
@@ -12,7 +12,7 @@ const NewsDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchNews = async () => {
+  const fetchNews = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`${backendUrl}/news`);
@@ -40,11 +40,13 @@ const NewsDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchNews();
-  }, [backendUrl]);
+  }, [fetchNews, backendUrl]);
+
+  const reversedNewsItems = [...newsItems].reverse();
 
   return (
     <div className="container">
@@ -54,20 +56,30 @@ const NewsDashboard = () => {
       </div>
       {loading && <div>Loading news...</div>}
       {error && <div>Error: {error}</div>}
-      {newsItems.map((newsItem) => (
+      {reversedNewsItems.map((newsItem) => (
         <div key={newsItem._id} className="section-box">
           <h3 className="news-item-title">{newsItem.title}</h3>
           <p className="news-item-comment">{newsItem.comment}</p>
-          <div className="admin-buttons">
-            <EditNews newsItem={newsItem} onNewsUpdate={fetchNews} />
-            <DeleteNews newsItem={newsItem} refreshNews={fetchNews} />
-          </div>
+          <EditNews newsItem={newsItem} onNewsUpdate={fetchNews} />
         </div>
       ))}
-      <ToastContainer />
-      <div className="button-container">
+      <ToastContainer
+        key={newsItems.length}
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <div className="admin-button">
         <Link to="/admin/images">
-          <button className="dashboard-button-small">Go to Image Dashboard</button>
+          <button className="dashboard-button-small">
+            Go to Image Dashboard
+          </button>
         </Link>
       </div>
     </div>
