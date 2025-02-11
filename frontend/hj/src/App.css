@@ -285,17 +285,17 @@ body {
 
 .button-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
   align-items: center;
 }
 
 /* EditNews form */
-
 .edit-news-form {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .edit-news-form .edit-form {
@@ -303,9 +303,10 @@ body {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 2000px;
+  max-width: 600px;
   margin: 0;
   padding: 0 20px;
+  margin-bottom: 10px;
 }
 
 .edit-news-form .form-group {
@@ -325,73 +326,11 @@ body {
 .edit-news-form .form-textarea {
   resize: vertical;
   min-height: 150px;
-}
-
-.edit-news-form .button-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
 }
 
 .edit-news-form .delete-button-container {
-  bottom: 20px; /* Keeps the delete button in the bottom-right corner */
-  right: 20px; /* Adjust this if needed for spacing */
-}
-
-.edit-news-form .navigate-button {
-  background-color: rgb(19, 128, 157);
-  color: white;
-  border: none;
-  padding: 12px 12px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  width: 100%; /* Ensures button spans full form width */
-  box-sizing: border-box;
-}
-
-.edit-news-form .navigate-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-/* .edit-news-form .edit-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 2000px;
-  margin: auto;
-}
-
-.edit-news-form .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.edit-news-form .form-group label {
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.edit-news-form .form-input,
-.edit-news-form .form-textarea {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.edit-news-form .form-textarea {
-  resize: vertical;
-  min-height: 150px;
-}
-
-.edit-news-form .button-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+  bottom: 20px;
+  right: 20px;
 }
 
 .edit-news-form .navigate-button {
@@ -410,10 +349,6 @@ body {
   background-color: #cccccc;
   cursor: not-allowed;
 }
-
-.button-container {
-  align-items: center;
-} */
 
 /* Spinner.css */
 .spinner-container {
@@ -594,21 +529,6 @@ body {
   max-width: 100%;
 }
 
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100vh; /* Full screen height */
-}
-
-.loading-container p {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #555;
-}
-
 /* Contact Form */
 .contact-form-container {
   max-width: 500px;
@@ -733,9 +653,9 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: center; /* Align buttons horizontally */
-  gap: 10px; /* Space between buttons */
-  margin-top: 20px; /* Adjust as necessary for spacing */
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .dashboard-button {
