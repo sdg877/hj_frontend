@@ -75,11 +75,9 @@ const NewsDashboard = () => {
         draggable
         pauseOnHover
       />
-      <div className="admin-button">
+      <div>
         <Link to="/admin/images">
-          <button className="dashboard-button-small">
-            Go to Image Dashboard
-          </button>
+          <button className="dashboard-button-small">Go to Image Dashboard</button>
         </Link>
       </div>
     </div>
