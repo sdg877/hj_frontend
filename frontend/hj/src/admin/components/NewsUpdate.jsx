@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import '../../App.css'
+import { toast, ToastContainer } from "react-toastify";
+import "../../App.css";
 import "react-toastify/dist/ReactToastify.css";
 
-const NewsUpdate = () => {
+const NewsUpdate = ({ onNewsAdded }) => {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
     if (!token) {
       toast.error("Unauthorized: Please log in first.");
       return;
@@ -24,7 +23,7 @@ const NewsUpdate = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(newUpdate),
       });
@@ -32,7 +31,17 @@ const NewsUpdate = () => {
       if (response.ok) {
         setTitle("");
         setComment("");
-        toast.success("News update added successfully!");
+        try {
+          const newNewsItem = await response.json();
+          toast.success("News update added successfully!");
+
+          if (onNewsAdded) {
+            onNewsAdded(newNewsItem); 
+          }
+        } catch (jsonError) {
+          console.error("Error parsing JSON:", jsonError);
+          toast.error("An error occurred. Please try again.");
+        }
       } else {
         const errorData = await response.json();
         toast.error(errorData.message || "Failed to add news update.");
@@ -44,8 +53,6 @@ const NewsUpdate = () => {
 
   return (
     <div className="news-update-container">
-      <h2 className="title">Add News Update</h2>
-
       <form onSubmit={handleSubmit} className="news-form">
         <div className="form-group">
           <label className="label">Title</label>
@@ -57,7 +64,6 @@ const NewsUpdate = () => {
             className="input-field"
           />
         </div>
-
         <div className="form-group">
           <label className="label">Comment</label>
           <textarea
@@ -67,14 +73,14 @@ const NewsUpdate = () => {
             className="input-field"
           ></textarea>
         </div>
-
-        <button
-          type="submit"
-          className="submit-button"
-        >
-          Add News
-        </button>
+        <div className="button-wrapper">
+          <button type="submit" className="submit-button">
+            Add News
+          </button>
+        </div>
       </form>
+    
+      <ToastContainer />
     </div>
   );
 };
