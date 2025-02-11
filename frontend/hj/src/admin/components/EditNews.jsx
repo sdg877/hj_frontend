@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import DeleteNews from "./DeleteNews";
 
-const EditNews = ({ newsItem, onNewsUpdate, onDelete }) => {
+const EditNews = ({ newsItem, onNewsUpdate }) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [editMode, setEditMode] = useState(false);
   const [title, setTitle] = useState(newsItem.title);
@@ -59,60 +60,34 @@ const EditNews = ({ newsItem, onNewsUpdate, onDelete }) => {
     }
   };
 
-  const handleDeleteClick = () => {
-    onDelete(newsItem._id);
-  };
-
   return (
     <div className="edit-news-form">
-      {editMode ? (
+      {editMode && (
         <div className="edit-form">
           <div className="form-group">
             <label htmlFor="title">Title</label>
-            <input
-              id="title"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="form-input"
-            />
+            <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} className="form-input" />
           </div>
           <div className="form-group">
             <label htmlFor="comment">Comment</label>
-            <textarea
-              id="comment"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              className="form-textarea"
-            />
+            <textarea id="comment" value={comment} onChange={(e) => setComment(e.target.value)} className="form-textarea" />
           </div>
-          <div className="button-group">
-            <button
-              className="admin-button"
-              onClick={handleSaveClick}
-              disabled={loading}
-            >
-              Save
-            </button>
-            <button
-              className="admin-button"
-              onClick={handleCancelClick}
-              disabled={loading}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <button
-            className="admin-button"
-            onClick={handleEditClick}
-          >
-            Edit
-          </button>
         </div>
       )}
+      <div className="button-group">
+        {editMode ? (
+          <>
+            <button className="admin-button" onClick={handleSaveClick} disabled={loading}>Save</button>
+            <button className="admin-button" onClick={handleCancelClick} disabled={loading}>Cancel</button>
+            <DeleteNews newsItem={newsItem} onNewsUpdate={onNewsUpdate} />
+          </>
+        ) : (
+          <>
+            <button className="admin-button" onClick={handleEditClick}>Edit</button>
+            <DeleteNews newsItem={newsItem} onNewsUpdate={onNewsUpdate} />
+          </>
+        )}
+      </div>
     </div>
   );
 };
