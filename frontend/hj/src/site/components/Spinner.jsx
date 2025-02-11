@@ -1,3 +1,4 @@
+// Spinner.js
 import React from "react";
 
 const Spinner = () => {
