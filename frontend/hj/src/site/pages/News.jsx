@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import "../../App.css";
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -8,10 +9,12 @@ const News = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/news`);
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/news`
+        );
 
         if (!response.ok) {
-          throw new Error('Failed to fetch news');
+          throw new Error("Failed to fetch news");
         }
 
         const data = await response.json();
@@ -22,7 +25,7 @@ const News = () => {
           );
           setNews(sortedNews);
         } else {
-          setError('No news available');
+          setError("No news available");
         }
       } catch (error) {
         setError(error.message);
@@ -52,12 +55,17 @@ const News = () => {
               <h3 className="news-item-title">{newsItem.title}</h3>
               <p className="news-item-comment">{newsItem.comment}</p>
               <p className="news-item-date">
-                <small>{new Date(newsItem.timestamp).toLocaleDateString()}</small>
+                <small>
+                  {new Date(newsItem.timestamp).toLocaleDateString()}
+                </small>
               </p>
             </div>
           ))
         ) : (
-          <p className="news-empty">No news available.</p>
+          <p className="news-empty">
+            No News Available. <br />
+            <br /> Check Back Soon for Updates!
+          </p>
         )}
       </div>
     </div>
