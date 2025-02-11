@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import EditNews from "./components/EditNews";
-import DeleteNews from "./components/DeleteNews";
 import NewsUpdate from "./components/NewsUpdate";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,11 +19,11 @@ const NewsDashboard = () => {
         const errData = await res.json();
         throw new Error(errData.message || "Failed to fetch news.");
       }
-
       const data = await res.json();
-
       if (data.news && Array.isArray(data.news)) {
-        const allNewsItems = data.news.flatMap((newsDoc) => newsDoc.newsUpdates);
+        const allNewsItems = data.news.flatMap(
+          (newsDoc) => newsDoc.newsUpdates
+        );
         setNewsItems(allNewsItems);
       } else if (data.newsItem && Array.isArray(data.newsItem)) {
         setNewsItems(data.newsItem);
@@ -40,29 +39,47 @@ const NewsDashboard = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [backendUrl]);
 
   useEffect(() => {
     fetchNews();
-  }, [fetchNews, backendUrl]);
+  }, [fetchNews]);
+
+  const handleNewsAdded = useCallback(() => {
+    fetchNews();
+  }, [fetchNews]);
 
   const reversedNewsItems = [...newsItems].reverse();
 
   return (
     <div className="container">
       <h2 className="news-page-title">News Management</h2>
-      <div className="section-box">
-        <NewsUpdate onNewsAdded={fetchNews} />
-      </div>
-      {loading && <div>Loading news...</div>}
-      {error && <div>Error: {error}</div>}
-      {reversedNewsItems.map((newsItem) => (
-        <div key={newsItem._id} className="section-box">
-          <h3 className="news-item-title">{newsItem.title}</h3>
-          <p className="news-item-comment">{newsItem.comment}</p>
-          <EditNews newsItem={newsItem} onNewsUpdate={fetchNews} />
+      <div className="dashboard-grid">
+        <div className="dashboard-panel">
+          <div className="section-box">
+            <h3>Add News</h3>
+            <NewsUpdate onNewsAdded={handleNewsAdded} />
+          </div>
         </div>
-      ))}
+        <div className="dashboard-panel">
+          <div className="section-box">
+            <h3>Existing News Updates</h3>
+            {loading && <div>Loading news...</div>}
+            {error && <div>Error: {error}</div>}
+            {newsItems.length === 0 ? (
+              <p>No news added</p>
+            ) : (
+              reversedNewsItems.map((newsItem) => (
+                <div key={newsItem._id} className="section-box">
+                  <h3 className="news-item-title">{newsItem.title}</h3>
+                  <p className="news-item-comment">{newsItem.comment}</p>
+                  <EditNews newsItem={newsItem} onNewsUpdate={fetchNews} />
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
       <ToastContainer
         key={newsItems.length}
         position="top-right"
@@ -77,7 +94,9 @@ const NewsDashboard = () => {
       />
       <div>
         <Link to="/admin/images">
-          <button className="dashboard-button-small">Go to Image Dashboard</button>
+          <button className="dashboard-button-small">
+            Go to Image Dashboard
+          </button>
         </Link>
       </div>
     </div>
