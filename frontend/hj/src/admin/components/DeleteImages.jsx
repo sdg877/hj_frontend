@@ -79,7 +79,7 @@ const DeleteImages = () => {
 
   return (
     <div>
-      <h2>Delete Images</h2>
+      <h4>Delete Images</h4>
       <div className="image-grid">
         {images.length === 0 ? (
           <p>No images available.</p>
