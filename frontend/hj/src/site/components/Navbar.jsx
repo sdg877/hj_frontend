@@ -20,6 +20,7 @@ const Navbar = () => {
   const generalLinks = [
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
+    { to: "/commissions", label: "Commissions" }
   ];
 
   const isAdmin = location.pathname.startsWith("/admin");
