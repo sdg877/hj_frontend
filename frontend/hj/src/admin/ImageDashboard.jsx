@@ -6,17 +6,26 @@ import DeleteImages from "./components/DeleteImages";
 const ImageDashboard = () => {
   return (
     <div className="container">
-      <h2>Image Management</h2>
-      <div className="section-box">
-        <ImageUpload />
-      </div>
-      <div className="section-box">
-        <DeleteImages />
-      </div>
-      <div>
+      <div className="header-container">
+        <h2 className="news-page-title">Image Management</h2>
         <Link to="/admin/news">
-          <button className="dashboard-button-small">Go to News Dashboard</button>
+          <button className="dashboard-button-small">
+            Go to News Dashboard
+          </button>
         </Link>
+      </div>
+
+      <div className="dashboard-grid">
+        <div className="dashboard-panel">
+          <div className="section-box">
+            <ImageUpload />
+          </div>
+        </div>
+        <div className="dashboard-panel">
+          <div className="section-box">
+            <DeleteImages />
+          </div>
+        </div>
       </div>
     </div>
   );
