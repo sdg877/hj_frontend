@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "../../App.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,14 +33,12 @@ const NewsUpdate = ({ onNewsAdded }) => {
         setComment("");
         try {
           const newNewsItem = await response.json();
-          toast.success("News update added successfully!");
-
           if (onNewsAdded) {
             onNewsAdded(newNewsItem); 
           }
         } catch (jsonError) {
           console.error("Error parsing JSON:", jsonError);
-          toast.error("An error occurred. Please try again.");
+          toast.error("An error occurred while processing the response.");
         }
       } else {
         const errorData = await response.json();
@@ -79,8 +77,6 @@ const NewsUpdate = ({ onNewsAdded }) => {
           </button>
         </div>
       </form>
-    
-      <ToastContainer />
     </div>
   );
 };
