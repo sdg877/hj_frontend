@@ -1,8 +1,8 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../../App.css";
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Carousel } from 'react-responsive-carousel';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Carousel } from "react-responsive-carousel";
 import Spinner from "./Spinner";
 
 const Gallery = ({ endpoint, title }) => {
@@ -15,7 +15,8 @@ const Gallery = ({ endpoint, title }) => {
       try {
         const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/${endpoint}`;
         const response = await axios.get(url);
-        setImages(response.data.images || []); 
+
+        setImages(response.data.images || []);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -44,11 +45,7 @@ const Gallery = ({ endpoint, title }) => {
     );
   }
 
-  if (images === null) { 
-    return null; 
-  }
-
-  if (images.length === 0) {
+  if (images === null || images.length === 0) {
     return (
       <div>
         <h1 className="gallery-title">{title}</h1>
@@ -63,7 +60,8 @@ const Gallery = ({ endpoint, title }) => {
       <Carousel>
         {images.map((image, index) => (
           <div key={index}>
-            <img src={image} alt={`Image ${index}`} />
+            <img src={image.url} alt={`Image ${index}`} />
+            {image.text && <p className="image-description">{image.text}</p>}
           </div>
         ))}
       </Carousel>
