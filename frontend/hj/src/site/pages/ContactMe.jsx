@@ -134,7 +134,12 @@ const ContactMe = () => {
         </div>
       </form>
       <p className="contact-email">
-        Heather Treharne Jones | treharnejonesart@gmail.com
+        Heather Treharne Jones |{" "}
+        <a 
+          href="mailto:treharnejonesart@gmail.com"
+        >
+          treharnejonesart@gmail.com
+        </a>
       </p>
 
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar />
