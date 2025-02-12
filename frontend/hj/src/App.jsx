@@ -14,6 +14,7 @@ import UploadImages from "./admin/components/ImageUpload.jsx";
 import NewsUpdate from "./admin/components/NewsUpdate.jsx";
 import AboutMe from "./site/pages/AboutMe.jsx";
 import ContactMe from "./site/pages/ContactMe.jsx";
+import Commissions from "./site/pages/Commissions.jsx";
 import Sculptures from "./site/components/sculptures.jsx";
 import Paintings from "./site/components/paintings.jsx";
 import Cards from "./site/components/cards.jsx";
@@ -107,6 +108,7 @@ function AppRoutes() {
         <Route path="/textiles" element={<Textiles />} />
         <Route path="/about" element={<AboutMe />} />
         <Route path="/news" element={<News />} />
+        <Route path="/commissions" element={<Commissions />} />
         <Route path="/contact" element={<ContactMe />} />
         <Route path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
