@@ -75,15 +75,21 @@ const ImageUpload = () => {
 
   return (
     <div className="image-upload-container">
-      <h2 className="title">Upload Image</h2>
+      <h4>Upload Image</h4>
 
+      {/* Hidden file input */}
       <input
         type="file"
         accept="image/*"
         onChange={handleFileChange}
-        className="file-input"
+        className="hidden-file-input"
+        id="file-input"
         disabled={uploading}
       />
+
+      <label htmlFor="file-input" className="custom-file-button">
+        {selectedFile ? selectedFile.name : "Choose Image"}
+      </label>
 
       <select
         value={category}
@@ -92,8 +98,8 @@ const ImageUpload = () => {
         disabled={uploading}
       >
         <option value="">Select Category</option>
-        <option value="paintings">Paintings</option>
         <option value="cards">Cards & Prints</option>
+        <option value="paintings">Paintings</option>
         <option value="sculptures">Sculptures</option>
         <option value="textiles">Textiles</option>
       </select>
