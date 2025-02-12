@@ -3,7 +3,7 @@ import drawingImage from "../../assets/drawing.jpg";
 import heatherStudio from "../../assets/heather-studio.jpeg";
 import sculptureByTheSea from "../../assets/sculpture-by-the-sea.jpg";
 import gumnuts from "../../assets/gumnuts.jpg"; 
-import shells from "../../assets/shells.jpg"; 
+import ships from "../../assets/ships.jpg"
 import "../../App.css";
 
 const AboutMe = () => {
@@ -54,9 +54,11 @@ const AboutMe = () => {
 
         <div className="text-image-container">
           <p className="about-me-text">
-            Since returning to South Wales, I have exhibited in various galleries including... 
+            Since returning to South Wales, I have exhibited in various galleries including:
             <br />
             St Donat’s Art Centre (2013): The Glamorgan Heritage Coast 
+            <br />
+            Butetown History and Art Centre (2013)
             <br />
             Llanover Hall (September 2024): Open Exhibition 
             <br />
@@ -69,17 +71,19 @@ const AboutMe = () => {
           </p>
           <div className="image-container right">
             <img src={gumnuts} alt="Clay Pieces" className="about-me-image" />
-            <p className="image-caption">Mt Tomah 'Eucalypti 103'  </p>
+            <p className="image-caption">Mt Tomah 'Eucalypti 103'</p>
           </div>
         </div>
 
         <div className="text-image-container">
           <div className="image-container left">
             <img src={drawingImage} alt="Drawing" className="about-me-image-small" /> 
+            <p className="image-caption">We Draw</p>
 
           </div>
           <div className="image-container right">
-            <img src={shells} alt="Shells" className="about-me-image-small" /> 
+            <img src={ships} alt="Ships" className="about-me-image-small" /> 
+            <p className="image-caption">Where Lightning Strikes </p>
           </div>
         </div>
       </div>
