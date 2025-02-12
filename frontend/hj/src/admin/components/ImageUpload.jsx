@@ -93,7 +93,7 @@ const ImageUpload = () => {
       >
         <option value="">Select Category</option>
         <option value="paintings">Paintings</option>
-        <option value="cards">Cards</option>
+        <option value="cards">Cards & Prints</option>
         <option value="sculptures">Sculptures</option>
         <option value="textiles">Textiles</option>
       </select>
