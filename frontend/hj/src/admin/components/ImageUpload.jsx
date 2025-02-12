@@ -7,7 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [category, setCategory] = useState("");
-  const [uploading, setUploading] = useState(false); 
+  const [description, setDescription] = useState("");
+  const [uploading, setUploading] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleFileChange = (e) => {
@@ -16,6 +17,10 @@ const ImageUpload = () => {
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
   };
 
   const handleUpload = async () => {
@@ -37,6 +42,9 @@ const ImageUpload = () => {
     const formData = new FormData();
     formData.append("image", selectedFile);
     formData.append("category", category);
+    if (description) {
+      formData.append("description", description);
+    }
 
     setUploading(true);
 
@@ -61,7 +69,7 @@ const ImageUpload = () => {
     } catch (error) {
       toast.error("Error occurred while uploading image.");
     } finally {
-      setUploading(false); 
+      setUploading(false);
     }
   };
 
@@ -90,6 +98,14 @@ const ImageUpload = () => {
         <option value="textiles">Textiles</option>
       </select>
 
+      <textarea
+        value={description}
+        onChange={handleDescriptionChange}
+        className="description-input"
+        placeholder="Enter optional description..."
+        disabled={uploading}
+      ></textarea>
+
       <button
         onClick={handleUpload}
         className="upload-button"
@@ -98,7 +114,7 @@ const ImageUpload = () => {
         {uploading ? "Uploading..." : "Upload Image"}
       </button>
 
-      {uploading && <Spinner />} 
+      {uploading && <Spinner />}
 
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar />
     </div>
