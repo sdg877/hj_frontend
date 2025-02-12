@@ -1,7 +1,6 @@
 body {
   font-family: "Questrial", sans-serif;
   background-color: #f4f4f4;
-  color: #333;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -32,6 +31,33 @@ body {
   outline: none;
 }
 
+.image-upload-container input[type="file"],
+.image-upload-container select,
+.image-upload-container textarea {
+  width: 100%;
+  padding: 10px; 
+  margin-bottom: 10px; 
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  resize: none;
+  height: auto;
+  min-height: 30px;
+}
+
+.image-upload-container textarea {
+    min-height: 30px; 
+    resize: vertical; 
+}
+
+.image-upload-container input[type="file"]:focus,
+.image-upload-container select:focus,
+.image-upload-container textarea:focus {
+  border-color: rgb(19, 128, 157);
+  outline: none;
+}
+
 /* Buttons */
 .submit-button,
 .upload-button {
@@ -48,13 +74,14 @@ body {
 
 .submit-button:hover,
 .upload-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(0, 108, 137);
 }
 
 .form-group {
   margin-bottom: 16px;
 }
 
+/* NavBar */
 .navbar {
   position: fixed;
   top: 0;
@@ -102,6 +129,56 @@ body {
   font-size: 3rem;
   color: rgb(24, 43, 132);
 }
+
+.banner {
+  width: 100vw;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1140px) {
+  .navbar-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    width: 200px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px 0;
+  }
+  .navbar-list.open {
+    display: flex;
+  }
+  .navbar-link {
+    display: block;
+    padding: 10px 15px;
+  }
+  .menu-toggle {
+    display: block;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(19, 128, 157);
+  }
+}
+
+@media (min-width: 1141px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
 
 .gallery-error,
 .gallery-empty {
@@ -164,6 +241,20 @@ body {
   margin-bottom: 0px;
   padding: 0;
   text-align: center;
+  color: rgb(24, 43, 132);
+}
+
+.card-info-title {
+  padding-top: 25px;
+  font-weight: bold;
+}
+
+.card-info {
+  text-align: center;
+}
+
+.image-description {
+  font-size: 22px;
 }
 
 .news-container {
@@ -189,6 +280,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
+  color: rgb(24, 43, 132);
 }
 
 .news-page-list {
@@ -280,7 +372,7 @@ body {
 
 .admin-button:focus,
 .delete-button:focus {
-  outline: 2px solid #4d90fe;
+  outline: 2px solid rgb(12, 88, 105);
 }
 
 .button-group {
@@ -488,7 +580,7 @@ body {
 .login-form-button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: rgb(19, 128, 157);
   color: white;
   border: none;
   border-radius: 4px;
@@ -496,7 +588,7 @@ body {
 }
 
 .login-form-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(12, 88, 105);
 }
 
 .login-warning {
@@ -539,6 +631,12 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.contact-form-container .form-input:focus,
+.contact-form-container .form-textarea:focus {
+  border-color: rgb(12, 88, 105);
+  outline: none;
+}
+
 .contact-title {
   text-align: center;
   font-size: 1.2rem;
@@ -546,10 +644,17 @@ body {
   margin-bottom: 20px;
 }
 
-.contact-email {
-  font-size: 18px;
-  text-align: center;
-  padding: 10px;
+.contact-link {
+  color: rgb(19, 128, 157); 
+  text-decoration: none; 
+}
+
+.contact-link:hover {
+  color: rgb(12, 88, 105); 
+}
+
+.contact-link {
+  transition: color 0.3s ease; 
 }
 
 .form {
@@ -594,7 +699,7 @@ body {
 }
 
 .form-button:hover {
-  background-color: rgb(19, 128, 157);
+  background-color: rgb(12, 88, 105);
 }
 
 .form-button:disabled {
@@ -614,19 +719,6 @@ body {
   grid-template-rows: var(--navbar-height) 250px 1fr;
   min-height: 100vh;
   width: 100%;
-}
-
-.banner {
-  width: 100vw;
-  height: 250px;
-  overflow: hidden;
-  position: relative;
-}
-
-.banner-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* Page Content Styling */
@@ -649,6 +741,25 @@ body {
   cursor: pointer;
   display: block;
   margin: 0 auto;
+  border-radius: 5px; 
+  text-decoration: none !important; 
+  outline: none;
+}
+
+.dashboard-button-small:hover {
+  background-color: rgb(16, 110, 132);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+}
+
+.dashboard-panel {
+  border: 1px solid #ccc; 
+  padding: 20px;
+  border-radius: 5px; 
 }
 
 .button-container {
@@ -680,6 +791,7 @@ body {
   margin-top: 60px;
   margin-bottom: 60px;
   width: 100%;
+  color: rgb(24, 43, 132);
 }
 
 .section-box {
