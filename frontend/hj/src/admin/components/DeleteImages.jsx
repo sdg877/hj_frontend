@@ -99,7 +99,7 @@ const DeleteImages = () => {
               <p className="image-category">{image.category}</p>
               <button
                 onClick={() => handleDelete(image.url)}
-                className="delete-button"
+                className="delete-button-images"
               >
                 X
               </button>
