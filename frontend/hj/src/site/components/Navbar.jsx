@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   if (location.pathname.startsWith("/login")) {
@@ -13,7 +14,7 @@ const Navbar = () => {
     { to: "/cards", label: "Cards & Prints" },
     { to: "/textiles", label: "Textiles" },
     { to: "/paintings", label: "Paintings" },
-    { to: "/news", label: "News" }
+    { to: "/news", label: "News" },
   ];
 
   const generalLinks = [
@@ -23,24 +24,38 @@ const Navbar = () => {
 
   const isAdmin = location.pathname.startsWith("/admin");
 
-  const links = isAdmin ? adminLinks : [
-    ...adminLinks,
-    ...generalLinks,
-  ];
+  const links = isAdmin ? adminLinks : [...adminLinks, ...generalLinks];
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <nav className="navbar">
-      <ul className="navbar-list">
+      <button
+        className="menu-toggle"
+        onClick={toggleMenu}
+        aria-label="Toggle Navigation"
+      >
+        ☰
+      </button>
+
+      <ul className={`navbar-list ${isMenuOpen ? "open" : ""}`}>
         {links.map(({ to, label }) =>
           location.pathname !== to ? (
             <li key={to} className="navbar-item">
-              <Link to={to} className="navbar-link">
+              <Link
+                to={to}
+                className="navbar-link"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 {label}
               </Link>
             </li>
           ) : null
         )}
       </ul>
+
       <div className="logo-container">
         <div className="logo-writing">heather treharne jones</div>
       </div>
