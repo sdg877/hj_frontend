@@ -3,7 +3,7 @@ import "../../App.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
-import Spinner from "./Spinner";
+import Spinner from "../components/Spinner";
 
 const Gallery = ({ endpoint, title }) => {
   const [images, setImages] = useState(null);

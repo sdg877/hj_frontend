@@ -3,7 +3,7 @@ import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import "../../App.css";
-import Spinner from "./Spinner";
+import Spinner from "../components/Spinner";
 import { Link } from 'react-router-dom'; 
 
 const Cards = () => {
