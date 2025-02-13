@@ -18,7 +18,12 @@ const Cards = () => {
         const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/${endpoint}`;
         const response = await axios.get(url);
 
-        setImages(response.data.images || []);
+        const processedImages = response.data.images.map((img) => ({
+          ...img,
+          text: img.text ? decodeURIComponent(img.text) : "",
+        }));
+
+        setImages(processedImages);
         setLoading(false);
       } catch (err) {
         setError(err.message);
