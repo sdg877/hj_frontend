@@ -7,18 +7,17 @@ import banner from "../../assets/banner.jpg";
 const Layout = ({ children }) => {
   const location = useLocation();
   const showContent = location.pathname !== "/login";
+  const showBanner = location.pathname !== "/" && location.pathname !== "/login";
 
   return (
     <div className="layout-container">
-      {showContent && (
-        <>
-          <div className="banner">
-            <img src={banner} alt="Banner" className="banner-image" />
-          </div>
-
-          <Navbar />
-        </>
+      {showBanner && (
+        <div className="banner">
+          <img src={banner} alt="Banner" className="banner-image" />
+        </div>
       )}
+
+      {showContent && <Navbar />}
 
       <main className="content">{children}</main>
     </div>
