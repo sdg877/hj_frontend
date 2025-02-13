@@ -457,7 +457,7 @@ body {
   object-fit: cover;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1200px) {
   .navbar-list {
     display: none;
     flex-direction: column;
@@ -489,7 +489,7 @@ body {
   }
 }
 
-@media (min-width: 1141px) {
+@media (min-width: 1201px) {
   .menu-toggle {
     display: none;
   }
