@@ -533,7 +533,6 @@ body {
   color: red;
 }
 
-/* Carousel Styles */
 .carousel .dot {
   background-color: rgb(19, 128, 157) !important;
   width: 10px;
@@ -542,24 +541,42 @@ body {
   margin: 0 5px;
   display: inline-block;
   cursor: pointer;
+  box-shadow: none !important; 
+  border: none !important;
+}
+
+.carousel .dot.selected {
+  background-color: rgb(19, 128, 157) !important; 
+  transform: scale(1.2);
+  opacity: 1; 
 }
 
 .custom-carousel {
   width: 80%;
   margin: 20px auto;
+  padding: 30px;
 }
 
 .carousel .slide {
   display: flex !important;
+  flex-direction: column;
   justify-content: center !important;
   align-items: center !important;
-  height: 75vh !important;
+  height: auto !important;
+  margin: 20px;
 }
 
 .carousel img {
-  max-width: 80% !important;
-  max-height: 80vh !important;
+  max-width: 100% !important;
+  max-height: 80vh !important; 
   object-fit: contain !important;
+}
+
+.image-description { 
+  margin-top: 15px; 
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 18pt; 
 }
 
 .carousel .thumbs-wrapper {
@@ -573,8 +590,8 @@ body {
 }
 
 .carousel .thumb {
-  width: 90px !important;
-  height: 70px !important;
+  width: 100px !important;
+  height: 100px !important;
   object-fit: cover !important;
   border-radius: 5px !important;
   cursor: pointer !important;
@@ -583,20 +600,76 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.2s ease; 
+  overflow: hidden; 
 }
-
 
 .carousel .thumb img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  filter: brightness(0.7);
+  transition: filter 0.3s ease; 
+  object-fit: cover; 
+}
+
+.carousel .thumb:hover img { 
+  filter: brightness(1); 
+  transform: scale(1.05); 
+}
+
+
+.carousel .thumb.selected img { 
+  filter: brightness(1); 
+  transform: scale(1);
 }
 
 .carousel .thumb.selected {
-  border: 3px solid rgb(19, 128, 157) !important;
-  box-shadow: 0 0 5px rgba(19, 128, 157, 0.5) !important;
+  opacity: 1;
+  border: 3px solid hsl(192, 82%, 35%) !important; 
+  box-shadow: 0 0 5px hsla(192, 82%, 35%, 0.5) !important; 
   border-radius: 5px !important;
 }
+
+
+
+
+/* 
+.carousel .thumb {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.7; 
+  transition: opacity 0.3s ease; 
+}
+
+.carousel .thumb img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.carousel .thumb:hover { 
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.carousel .thumb.selected {
+  opacity: 1;
+  border: 3px solid hsl(192, 82%, 35%) !important; 
+  box-shadow: 0 0 5px hsla(192, 82%, 35%, 0.5) !important; 
+  border-radius: 5px !important;
+}
+
+.carousel .thumb:not(.selected) {
+  filter: brightness(0.7); 
+} */
 
 /* ... other CSS ... */
 
@@ -617,33 +690,30 @@ body {
   }
 
   .carousel .slide {
-    height: 50vh !important; /* Adjust as needed */
+    height: auto !important; /* Remove fixed height */
+    flex-direction: column; /* Ensure vertical stacking */
   }
 
   .carousel img {
     max-width: 95% !important;
     max-height: 50vh !important;
-    object-fit: contain !important; /* Key for preventing cropping */
-  }
-
-  .carousel .thumb {
-    width: 70px !important; /* Adjust as needed */
-    height: 50px !important; /* Adjust as needed */
+    object-fit: contain !important; 
   }
 
   .image-description {
     font-size: 1rem;
     padding: 5px;
-    text-align: center;
+    margin-top: 5px; /* Adjust margin for mobile */
+  }
+
+  .carousel .thumb {
+    width: 70px !important; 
+    height: 50px !important; 
   }
 }
 
 /* Media Query for even smaller phones (if needed) */
 @media (max-width: 400px) {
-  .carousel .slide {
-    height: 40vh !important;
-  }
-
   .carousel img {
     max-height: 40vh !important;
   }
@@ -657,7 +727,7 @@ body {
 
 .gallery-title {
   margin-top: 15px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   padding: 0;
   text-align: center;
   color: rgb(24, 43, 132);
@@ -679,9 +749,6 @@ body {
   margin-bottom: 2px;
 }
 
-.image-description {
-  font-size: 22px;
-}
 
 /* News Page */
 .news-container {
