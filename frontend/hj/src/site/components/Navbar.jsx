@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import banner from "../../assets/banner.jpg"; // Ensure correct path
 import "../../App.css";
 
 const Navbar = () => {
@@ -34,40 +33,36 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-content">
-        <button
-          className="menu-toggle"
-          onClick={toggleMenu}
-          aria-label="Toggle Navigation"
-        >
-          ☰
-        </button>
+      <button
+        className="menu-toggle"
+        onClick={toggleMenu}
+        aria-label="Toggle Navigation"
+      >
+        ☰
+      </button>
 
-        <div className="logo-container">
-          <div className="logo-writing">heather treharne jones</div>
-        </div>
+      <ul className={`navbar-list ${isMenuOpen ? "open" : ""}`}>
+        {links.map(({ to, label }) =>
+          location.pathname !== to ? (
+            <li key={to} className="navbar-item">
+              <Link
+                to={to}
+                className="navbar-link"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            </li>
+          ) : null
+        )}
+      </ul>
 
-        <ul className={`navbar-list ${isMenuOpen ? "open" : ""}`}>
-          {links.map(({ to, label }) =>
-            location.pathname !== to ? (
-              <li key={to} className="navbar-item">
-                <Link
-                  to={to}
-                  className="navbar-link"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              </li>
-            ) : null
-          )}
-        </ul>
-      </div>
-      <div className="banner">
-        <img src={banner} alt="Banner" className="banner-image" />
+      <div className="logo-container">
+        <div className="logo-writing">heather treharne jones</div>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
