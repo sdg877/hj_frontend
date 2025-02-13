@@ -425,7 +425,7 @@ body {
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 4px 8px;
   background: rgb(19, 128, 157);
   -webkit-background-clip: text;
   background-clip: text;
@@ -439,7 +439,7 @@ body {
 }
 
 .logo-writing {
-  font-size: 2.8rem;
+  font-size: 2.7rem;
   color: rgb(24, 43, 132);
 }
 
@@ -457,7 +457,7 @@ body {
   object-fit: cover;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .navbar-list {
     display: none;
     flex-direction: column;
@@ -489,7 +489,7 @@ body {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1281px) {
   .menu-toggle {
     display: none;
   }
