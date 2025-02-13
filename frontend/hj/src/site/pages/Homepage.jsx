@@ -19,19 +19,19 @@ const Homepage = () => {
           </Link>
         </div>
         <div className="image-item">
-          <Link to="/paintings">
+          <Link to="/sculptures">
             <img
-              src={collagePaintings}
-              alt="Collage Paintings"
+              src={collageSculpture}
+              alt="Collage Sculpture"
               className="homepage-image"
             />
           </Link>
         </div>
         <div className="image-item">
-          <Link to="/sculptures">
+          <Link to="/paintings">
             <img
-              src={collageSculpture}
-              alt="Collage Sculpture"
+              src={collagePaintings}
+              alt="Collage Paintings"
               className="homepage-image"
             />
           </Link>
