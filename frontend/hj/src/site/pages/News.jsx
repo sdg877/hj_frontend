@@ -62,10 +62,12 @@ const News = () => {
             </div>
           ))
         ) : (
+          <div className="news-empty-box">
           <p className="news-empty">
             No News Available. <br />
             <br /> Check Back Soon for Updates!
           </p>
+          </div>
         )}
       </div>
     </div>
