@@ -10,6 +10,7 @@ const DeleteImages = () => {
   const [loading, setLoading] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [error, setError] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -65,6 +66,15 @@ const DeleteImages = () => {
     setImagesLoaded((prevCount) => prevCount + 1);
   };
 
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const filteredImages =
+    selectedCategory === ""
+      ? images
+      : images.filter((image) => image.category === selectedCategory);
+
   if (loading) {
     return (
       <div className="spinner-container">
@@ -80,11 +90,24 @@ const DeleteImages = () => {
   return (
     <div>
       <h4>Delete Images</h4>
+
+      {/* Category Dropdown */}
+      <div className="category-filter">
+        <label htmlFor="category">Filter by Category:</label>
+        <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="">All Categories</option>
+          <option value="cards">Cards & Prints</option>
+          <option value="paintings">Paintings</option>
+          <option value="sculptures">Sculptures</option>
+          <option value="textiles">Textiles</option>
+        </select>
+      </div>
+
       <div className="image-grid">
-        {images.length === 0 ? (
-          <p>No images available.</p>
+        {filteredImages.length === 0 ? (
+          <p>No images available in this category.</p>
         ) : (
-          images.map((image, index) => (
+          filteredImages.map((image, index) => (
             <div key={index} className="image-item">
               <div className="image-thumbnail-container">
                 <img
@@ -108,11 +131,9 @@ const DeleteImages = () => {
         )}
       </div>
 
-      {imagesLoaded < images.length && (
+      {imagesLoaded < filteredImages.length && (
         <div>
-          <div>
-            <Spinner />
-          </div>
+          <Spinner />
         </div>
       )}
 
