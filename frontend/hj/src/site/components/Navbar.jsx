@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import banner from "../../assets/banner.jpg"; // Ensure correct path
+import "../../App.css";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +26,6 @@ const Navbar = () => {
   ];
 
   const isAdmin = location.pathname.startsWith("/admin");
-
   const links = isAdmin ? adminLinks : [...adminLinks, ...generalLinks];
 
   const toggleMenu = () => {
@@ -33,32 +34,37 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <button
-        className="menu-toggle"
-        onClick={toggleMenu}
-        aria-label="Toggle Navigation"
-      >
-        ☰
-      </button>
+      <div className="navbar-content">
+        <button
+          className="menu-toggle"
+          onClick={toggleMenu}
+          aria-label="Toggle Navigation"
+        >
+          ☰
+        </button>
 
-      <ul className={`navbar-list ${isMenuOpen ? "open" : ""}`}>
-        {links.map(({ to, label }) =>
-          location.pathname !== to ? (
-            <li key={to} className="navbar-item">
-              <Link
-                to={to}
-                className="navbar-link"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {label}
-              </Link>
-            </li>
-          ) : null
-        )}
-      </ul>
+        <div className="logo-container">
+          <div className="logo-writing">heather treharne jones</div>
+        </div>
 
-      <div className="logo-container">
-        <div className="logo-writing">heather treharne jones</div>
+        <ul className={`navbar-list ${isMenuOpen ? "open" : ""}`}>
+          {links.map(({ to, label }) =>
+            location.pathname !== to ? (
+              <li key={to} className="navbar-item">
+                <Link
+                  to={to}
+                  className="navbar-link"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {label}
+                </Link>
+              </li>
+            ) : null
+          )}
+        </ul>
+      </div>
+      <div className="banner">
+        <img src={banner} alt="Banner" className="banner-image" />
       </div>
     </nav>
   );
