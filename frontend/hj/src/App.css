@@ -533,6 +533,8 @@ body {
   color: red;
 }
 
+
+/* Gallery Pages */
 .carousel .dot {
   background-color: rgb(19, 128, 157) !important;
   width: 10px;
@@ -631,47 +633,6 @@ body {
   border-radius: 5px !important;
 }
 
-
-
-
-/* 
-.carousel .thumb {
-  width: 100px !important;
-  height: 100px !important;
-  object-fit: cover !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
-  margin: 0px !important;
-  padding: 0px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  opacity: 0.7; 
-  transition: opacity 0.3s ease; 
-}
-
-.carousel .thumb img {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.carousel .thumb:hover { 
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.carousel .thumb.selected {
-  opacity: 1;
-  border: 3px solid hsl(192, 82%, 35%) !important; 
-  box-shadow: 0 0 5px hsla(192, 82%, 35%, 0.5) !important; 
-  border-radius: 5px !important;
-}
-
-.carousel .thumb:not(.selected) {
-  filter: brightness(0.7); 
-} */
-
-/* ... other CSS ... */
 
 /* Gallery Styles - Mobile Enhancements (Targeting < 768px) */
 @media (max-width: 768px) {
@@ -874,6 +835,7 @@ body {
 .homepage-container {
   text-align: center;
   background-color: white;
+  margin-top: 150px;
 }
 
 .image-gallery-homepage {
