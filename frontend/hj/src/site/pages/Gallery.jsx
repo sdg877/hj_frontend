@@ -16,7 +16,12 @@ const Gallery = ({ endpoint, title }) => {
         const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/${endpoint}`;
         const response = await axios.get(url);
 
-        setImages(response.data.images || []);
+        const processedImages = response.data.images.map((img) => ({
+          ...img,
+          text: img.text ? decodeURIComponent(img.text) : "",
+        }));
+
+        setImages(processedImages);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -55,7 +60,7 @@ const Gallery = ({ endpoint, title }) => {
   }
 
   return (
-    <div>
+    <div className="gallery-container">
       <h1 className="gallery-title">{title}</h1>
       <Carousel>
         {images.map((image, index) => (
