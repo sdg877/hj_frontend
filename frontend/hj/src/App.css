@@ -501,10 +501,10 @@ body {
 @media (max-width: 768px) {
   .navbar-top {
     display: flex;
-    justify-content: space-between; /* Ensures the toggle and logo are at opposite ends */
+    justify-content: space-between; 
     align-items: center;
     width: 100%;
-    padding: 10px 15px; /* Add some padding for spacing */
+    padding: 10px 15px; 
   }
 
   .menu-toggle {
@@ -521,20 +521,47 @@ body {
     font-size: 1.5rem;
     white-space: nowrap;
     text-align: right;
-    margin-left: auto; /* Ensures it moves to the right */
+    margin-left: auto; 
   }
 }
 
+/* Gallery Pages */
 
-
+/* Card & Print Page */
 .gallery-error,
 .gallery-empty {
   text-align: center;
   color: red;
 }
 
+.gallery-info-title {
+  padding-top: 25px;
+  font-weight: bold;
+  text-align: center;
+}
 
-/* Gallery Pages */
+.gallery-info {
+  width: 100%;
+  max-width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.gallery-info p {
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
 .carousel .dot {
   background-color: rgb(19, 128, 157) !important;
   width: 10px;
@@ -570,15 +597,15 @@ body {
 
 .carousel img {
   max-width: 100% !important;
-  max-height: 80vh !important; 
+  max-height: 80vh !important;
   object-fit: contain !important;
 }
 
-.image-description { 
-  margin-top: 15px; 
+.image-description {
+  margin-top: 15px;
   margin-bottom: 30px;
   text-align: center;
-  font-size: 18pt; 
+  font-size: 18pt;
 }
 
 .carousel .thumbs-wrapper {
@@ -589,6 +616,7 @@ body {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  margin: 15px;
 }
 
 .carousel .thumb {
@@ -602,39 +630,41 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  opacity: 0.7;
-  transition: opacity 0.3s ease, transform 0.2s ease; 
-  overflow: hidden; 
+  transition: transform 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
 }
 
 .carousel .thumb img {
   width: 100% !important;
   height: 100% !important;
-  filter: brightness(0.7);
-  transition: filter 0.3s ease; 
-  object-fit: cover; 
+  filter: brightness(0.7); /* Initial greyed-out state */
+  transition: filter 0.3s ease;
+  object-fit: fill;
 }
 
-.carousel .thumb:hover img { 
-  filter: brightness(1); 
-  transform: scale(1.05); 
+.carousel .thumb:hover img {
+  filter: brightness(0.85); 
+  transform: scale(1.05);
 }
 
-
-.carousel .thumb.selected img { 
+.carousel .thumb.selected img {
   filter: brightness(1); 
   transform: scale(1);
 }
 
+.carousel .thumb:hover {
+  border: 3px solid hsl(192, 82%, 25%) !important; 
+  box-shadow: 0 0 8px hsla(192, 82%, 25%, 0.7) !important; 
+  transform: scale(1.05);
+}
+
 .carousel .thumb.selected {
-  opacity: 1;
-  border: 3px solid hsl(192, 82%, 35%) !important; 
-  box-shadow: 0 0 5px hsla(192, 82%, 35%, 0.5) !important; 
+  border: 3px solid hsl(192, 82%, 35%) !important;
+  box-shadow: 0 0 5px hsla(192, 82%, 35%, 0.5) !important;
   border-radius: 5px !important;
+  opacity: 1; 
 }
 
 
-/* Gallery Styles - Mobile Enhancements (Targeting < 768px) */
 @media (max-width: 768px) {
   .gallery-container {
     padding: 10px;
@@ -692,22 +722,6 @@ body {
   padding: 0;
   text-align: center;
   color: rgb(24, 43, 132);
-}
-
-/* Card & Print Page */
-.card-info-title {
-  padding-top: 25px;
-  font-weight: bold;
-}
-
-.card-info {
-  text-align: center;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-
-.card-info p {
-  margin-bottom: 2px;
 }
 
 
@@ -888,24 +902,34 @@ body {
 /* Delete Images Page styling */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); 
   gap: 0.5rem;
-  justify-items: center;
+  margin-top: 20px;
+}
+
+.image-thumbnail-container {
+  width: 100px; 
+  height: 100px; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden;
+  border-radius: 5px;
+  grid-column: span 1; 
+  margin: 0 auto; 
 }
 
 .image-thumbnail {
   width: 100%;
-  height: 12rem;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.1rem;
   display: block;
 }
 
 .image-category {
   font-size: 0.9rem;
   font-weight: bold;
-  white-space: nowrap;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
@@ -948,16 +972,16 @@ body {
 }
 
 .contact-email {
-  text-align: center; /* Centers the name and email */
+  text-align: center;
 }
 
-.contact-email a { /* Targets the link within .contact-email */
+.contact-email a { 
   color: rgb(19, 128, 157);
   text-decoration: none;
-  transition: color 0.3s ease; /* Add transition for hover effect if needed */
+  transition: color 0.3s ease; 
 }
 
-.contact-email a:hover { /* Optional hover effect */
+.contact-email a:hover { 
   color: rgb(12, 88, 105);
 }
 
