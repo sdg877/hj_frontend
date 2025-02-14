@@ -1,4 +1,4 @@
-import Gallery from './Gallery';
+import Gallery from "../components/Gallery.jsx";
 import React from 'react';
 
 const Sculptures = () => {

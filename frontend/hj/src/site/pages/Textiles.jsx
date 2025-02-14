@@ -1,5 +1,5 @@
 import React from "react";
-import Gallery from "./Gallery";
+import Gallery from "../components/Gallery.jsx";
 
 const Textiles = () => {
   return <Gallery endpoint="textiles" title="Textiles" />;
