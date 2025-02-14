@@ -1,5 +1,5 @@
 import React from "react";
-import "../../App.css";
+import "../../styles/Homepage.css";
 import collageCards from "../../assets/collage-cards.jpg";
 import collagePaintings from "../../assets/collage-paintings.jpg";
 import collageSculpture from "/src/assets/collage-sculpture.jpg";
