@@ -1,0 +1,198 @@
+/* News Page */
+.news-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.news-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  background-color: #f5f5f5;
+}
+
+.news-page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: rgb(24, 43, 132);
+}
+
+.news-page-list {
+  width: 100%;
+  max-width: 900px;
+}
+
+.news-item {
+  width: 100%;
+  max-width: 900px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(24, 43, 132, 0.2);
+  margin-bottom: 20px;
+  text-align: left;
+  border-left: 5px solid rgb(116, 30, 30);
+}
+
+.news-item-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.news-item-comment {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.news-empty-box {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.news-empty-text {
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.news-item-date {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .news-page-container {
+    margin-top: 10px !important;
+  }
+
+  .news-page-title {
+    font-size: 1.5rem;
+    padding: 10px 0 !important;
+  }
+
+  .news-page-list {
+    padding: 10px;
+  }
+
+  .news-item {
+    padding: 10px;
+  }
+}
+
+/* Contact Form */
+.contact-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container .form-input:focus,
+.contact-form-container .form-textarea:focus {
+  border-color: rgb(12, 88, 105);
+  outline: none;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 15px;
+  margin-bottom: 20px;
+}
+
+.contact-link {
+  color: rgb(19, 128, 157);
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  color: rgb(12, 88, 105);
+}
+
+.contact-link {
+  transition: color 0.3s ease;
+}
+
+.contact-email {
+  text-align: center;
+}
+
+.contact-email a {
+  color: rgb(19, 128, 157);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-email a:hover {
+  color: rgb(12, 88, 105);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.form-button,
+.custom-file-button {
+  padding: 12px;
+  background-color: rgb(19, 128, 157);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-button:hover,
+.custom-file-button:hover {
+  background-color: rgb(12, 88, 105);
+}
+
+.form-button:disabled,
+.custom-file-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
