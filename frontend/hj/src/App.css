@@ -741,14 +741,14 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px;
+  padding: 25px;
   background-color: #f5f5f5;
 }
 
 .news-page-title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: rgb(24, 43, 132);
 }
 
@@ -797,12 +797,30 @@ body {
   color: #444; 
 }
 
-
 .news-item-date {
   font-size: 0.9rem;
   font-style: italic;
 }
 
+@media (max-width: 768px) {
+  .news-page-container {
+    margin-top: 10px !important;
+  }
+
+  .news-page-title {
+    font-size: 1.5rem;
+    padding: 10px 0 !important; 
+  }
+
+  .news-page-list {
+    padding: 10px; 
+  }
+
+  .news-item {
+    padding: 10px; 
+  }
+
+}
 /* Spinner.css */
 .spinner-container {
   position: fixed;
@@ -1236,6 +1254,54 @@ body {
   color: #333;
   max-width: 600px;
 }
+@media (max-width: 768px) {
+  .commissions-container {
+    padding: 2rem 3%;
+  }
+
+  .commissions-heading {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .text-image-container {
+    flex-direction: column;
+    align-items: center; /* Vertical alignment */
+    /* Remove justify-content: center here */
+    gap: 1.5rem;
+    padding: 15px;
+  }
+
+  .text-image-container.reverse {
+    flex-direction: column;
+  }
+
+  .image-container {
+    width: 100%;
+    padding-right: 27px;
+  }
 
 
+  .image-caption {
+      text-align: center;
+      margin-top: 0.5rem;
+  }
 
+  .commissions-text {
+    width: 100%; 
+    text-align: center;
+    padding-right: 27px;
+    font-size: 18px;
+  }
+
+  .commissions-text p {
+    text-align: center; 
+    margin: 0; 
+  }
+
+  .commissions-text a {
+    text-align: center;
+    display: inline-block; 
+  }
+}
