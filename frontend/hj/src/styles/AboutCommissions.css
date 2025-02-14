@@ -80,6 +80,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    justify-content: center; 
   }
 
   .text-image-container.reverse {
@@ -88,21 +89,20 @@
 
   .about-me-text {
     max-width: 100%;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    text-align: center; 
+    flex: none; 
   }
 
   .image-container {
     width: 90%;
     height: auto;
-    margin: 0 auto;
+    margin: 0 auto 1.5rem;
     max-width: 400px;
-    margin-bottom: 1.5rem;
-    margin-left: 0;
-    margin-right: 0;
   }
 
   .image-caption {
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
 }
 
@@ -188,10 +188,10 @@
 
   .text-image-container {
     flex-direction: column;
-    align-items: center; /* This is good for centering the containers */
+    align-items: center; 
     gap: 1.5rem;
     padding: 15px;
-    justify-content: center; /* Add this to center along the main axis */
+    justify-content: center; 
   }
 
   .text-image-container.reverse {
@@ -200,10 +200,9 @@
 
   .image-container {
     width: 100%;
-    /* Remove padding-right */
   }
 
-  .commissions-main-image { /* Add this for better image responsiveness */
+  .commissions-main-image { 
     max-width: 100%;
     height: auto;
   }
@@ -215,12 +214,10 @@
 
   .commissions-text {
     width: 100%;
-    text-align: center; /* Center the text content */
-    /* Remove padding-right */
-    font-size: 18px;
-    /* Remove flex properties */
-    flex: none; /* or flex: 0 1 auto; */
-    max-width: 100%; /* Ensure text doesn't overflow */
+    text-align: center; 
+    font-size: 1rem;
+    flex: none;
+    max-width: 100%;
   }
 
   .commissions-text p {
