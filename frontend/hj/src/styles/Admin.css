@@ -1,0 +1,411 @@
+
+.content {
+    padding: 20px;
+  }
+  
+  .dashboard-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .dashboard-button {
+    background-color: rgb(19, 128, 157);
+    color: white;
+    font-size: 30px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navigate-button {
+    background-color: rgb(19, 128, 157);
+    color: white;
+    align-items: center;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .news-page-title {
+    margin-left: 20px;
+  }
+  
+  .dashboard-button-small {
+    background-color: rgb(19, 128, 157);
+    color: white;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none !important;
+    outline: none;
+    margin-right: 20px;
+  }
+  
+  .dashboard-button-small:hover {
+    background-color: rgb(16, 110, 132);
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .dashboard-panel {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .section-box {
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .news-item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .news-item-comment {
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-title {
+    text-align: center;
+    display: block;
+    font-size: 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+    color: rgb(24, 43, 132);
+  }
+  
+  /* Login Page */
+  .login-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .login-image {
+    flex: 1;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .login-form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #fff;
+  }
+  
+  .login-form-field {
+    margin-bottom: 15px;
+  }
+  
+  .login-form-label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .login-form-input {
+    width: 150%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .login-form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(19, 128, 157);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-form-button:hover {
+    background-color: rgb(12, 88, 105);
+  }
+  
+  .login-warning {
+    text-align: center;
+  }
+  
+  /* Button Styling */
+  .admin-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .admin-button,
+  .delete-button {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    border: none;
+  }
+  
+  .admin-button {
+    background-color: rgb(19, 128, 157);
+    color: white;
+  }
+  
+  .admin-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .admin-button:hover:not(:disabled) {
+    background-color: rgb(16, 110, 132);
+  }
+  
+  .delete-button {
+    background-color: red;
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: darkred;
+  }
+  
+  .delete-button-images {
+    background-color: red;
+    color: white;
+    height: 25px;
+    width: 25px;
+    padding: 0 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    border: none;
+  }
+  
+  .delete-button-images:hover {
+    background-color: darkred;
+  }
+  
+  .admin-button:focus,
+  .delete-button:focus {
+    outline: 2px solid rgb(12, 88, 105);
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  /* EditNews form */
+  .edit-news-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .edit-news-form .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0;
+    padding: 0 20px;
+    margin-bottom: 10px;
+  }
+  
+  .edit-news-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .edit-news-form .form-input,
+  .edit-news-form .form-textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .edit-news-form .form-textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  .edit-news-form .delete-button-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .edit-news-form .navigate-button {
+    background-color: rgb(19, 128, 157);
+    color: white;
+    border: none;
+    padding: 12px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .edit-news-form .navigate-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Image Dashboard */
+  .hidden-file-input {
+    display: none;
+  }
+  
+  .input-field,
+  .category-select {
+    width: 100%;
+    padding: 18px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Focus effect */
+  .input-field:focus,
+  .category-select:focus {
+    border-color: rgb(19, 128, 157);
+    outline: none;
+  }
+  
+  .image-upload-container input[type="file"],
+  .image-upload-container select,
+  .image-upload-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    resize: none;
+    height: auto;
+    min-height: 30px;
+  }
+  
+  .image-upload-container textarea {
+    min-height: 30px;
+    resize: vertical;
+  }
+  
+  .image-upload-container input[type="file"]:focus,
+  .image-upload-container select:focus,
+  .image-upload-container textarea:focus {
+    border-color: rgb(19, 128, 157);
+    outline: none;
+  }
+  
+  /* Buttons */
+  .submit-button,
+  .upload-button {
+    background-color: rgb(19, 128, 157);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .submit-button:hover,
+  .upload-button:hover {
+    background-color: rgb(0, 108, 137);
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  
+  
+  /* Delete Images Page styling */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 20px;
+  }
+  
+  .image-thumbnail-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+    grid-column: span 1;
+    margin: 0 auto;
+  }
+  
+  .image-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .image-category {
+    font-size: 0.9rem;
+    font-weight: bold;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  
