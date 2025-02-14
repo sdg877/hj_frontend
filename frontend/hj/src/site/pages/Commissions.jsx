@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import commission1 from "../../assets/commission1.jpg";
 import commission2 from "../../assets/commission2.jpg";
 import commission3 from "../../assets/commission3.jpg";
-import "../../styles/AboutCommissions.css";
+import "../../App.css";
 
 const Commissions = () => {
   return (
@@ -23,9 +23,9 @@ const Commissions = () => {
             <p className="image-caption">Geometric Diptych Commission</p>
           </div>
           <p className="commissions-text">
-            I have worked on various commissions and enjoy collaborating with clients to bring their ideas to life, creating unique and personalized artworks.
+            I have worked on various commissions and enjoy collaborating with clients to bring their ideas to life, creating unique and personalised artworks.
             <br /><br />
-            Recently, I was commissioned by Katherine Pooley Design Studio to create a diptych on canvas. The brief called for a geometric design, with images and swatches provided for precise color matching. Using acrylic paint, I layered colors to achieve subtle blends and depth.
+            Recently, I was commissioned by Katherine Pooley Design Studio to create a diptych on canvas. The brief called for a geometric design, with images and swatches provided for precise colour matching. Using acrylic paint, I layered colours to achieve subtle blends and depth.
           </p>
         </div>
 
