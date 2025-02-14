@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import commission1 from "../../assets/commission1.jpg";
 import commission2 from "../../assets/commission2.jpg";
 import commission3 from "../../assets/commission3.jpg";
@@ -22,22 +23,15 @@ const Commissions = () => {
             <p className="image-caption">Geometric Diptych Commission</p>
           </div>
           <p className="commissions-text">
-            I have worked on a number of commissions and enjoy discussing ideas and
-            collaborating with clients to create original and personalised artworks.
+            I have worked on various commissions and enjoy collaborating with clients to bring their ideas to life, creating unique and personalized artworks.
             <br /><br />
-            Recently, I was commissioned by Katherine Pooley Design Studio to create a
-            diptych on canvas. The brief was a geometric design with images and swatches
-            provided for colour matching. Working in acrylic paint and layering to create a subtle
-            blend of colour and varying shades.
+            Recently, I was commissioned by Katherine Pooley Design Studio to create a diptych on canvas. The brief called for a geometric design, with images and swatches provided for precise color matching. Using acrylic paint, I layered colors to achieve subtle blends and depth.
           </p>
         </div>
 
         <div className="text-image-container">
           <p className="commissions-text">
-            And on a bird theme...<br /><br />
-            The client had requested a pair of lovebirds, with the brief to use recycled materials.
-            So for this, I assembled scrap metals to create the birds and mounted them on
-            driftwood.
+            For a nature-inspired project, a client requested a pair of lovebirds made from recycled materials. To achieve this, I assembled scrap metals to form the birds and mounted them on driftwood.
           </p>
           <div className="image-container right">
             <img
@@ -59,9 +53,9 @@ const Commissions = () => {
             <p className="image-caption">Woodland Bird Commission</p>
           </div>
           <p className="commissions-text">
-            Here was an opportunity to work directly in the landscape. The brief for this bird was
-            to integrate it within a woodland setting. I constructed a metal base and wire to hold
-            pine cones and seed pods. Most of the materials were found in the garden.
+            Another commission allowed me to work directly in the landscape. The brief was to integrate a bird sculpture within a woodland setting. I constructed a metal base and used wire to secure pine cones and seed pods, with most of the materials sourced from the garden.
+            <br /><br />
+            If you’re interested in commissioning a piece, please <Link to="/contact" className="contact-link">get in touch</Link> to discuss your ideas.
           </p>
         </div>
       </div>
