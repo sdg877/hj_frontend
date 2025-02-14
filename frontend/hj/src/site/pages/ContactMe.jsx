@@ -3,6 +3,7 @@ import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../site/components/Spinner";
+import "../../styles/NewsContact.css";
 
 const ContactMe = () => {
   const [formData, setFormData] = useState({
