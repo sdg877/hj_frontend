@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import commission1 from "../../assets/commission1.jpg";
 import commission2 from "../../assets/commission2.jpg";
 import commission3 from "../../assets/commission3.jpg";
-import "../../App.css";
+import "../../styles/AboutCommissions.css";
 
 const Commissions = () => {
   return (

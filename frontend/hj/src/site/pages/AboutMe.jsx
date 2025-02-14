@@ -4,7 +4,7 @@ import heatherStudio from "../../assets/heather-studio.jpeg";
 import sculptureByTheSea from "../../assets/sculpture-by-the-sea.jpg";
 import gumnuts from "../../assets/gumnuts.jpg"; 
 import ships from "../../assets/ships.jpg"
-import "../../App.css";
+import "../../styles/AboutCommissions.css";
 
 const AboutMe = () => {
   return (
