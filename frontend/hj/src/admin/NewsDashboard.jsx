@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import EditNews from "./components/EditNews"; 
 import NewsUpdate from "./components/NewsUpdate";
 import { ToastContainer, toast } from "react-toastify";
+import "../styles/Admin.css"
 import "react-toastify/dist/ReactToastify.css";
 
 const NewsDashboard = () => {

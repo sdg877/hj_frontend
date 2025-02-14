@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import DeleteNews from "./DeleteNews";
+import "../../styles/Admin.css"
 
 const EditNews = ({ newsItem, onNewsUpdate }) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;

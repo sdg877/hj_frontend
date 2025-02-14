@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import "../../App.css";
+import "../../styles/Admin.css"
 import "react-toastify/dist/ReactToastify.css";
 
 const NewsUpdate = ({ onNewsAdded }) => {

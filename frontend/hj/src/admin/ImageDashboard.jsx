@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ImageUpload from "./components/ImageUpload";
 import DeleteImages from "./components/DeleteImages";
+import "../styles/Admin.css"
 
 const ImageDashboard = () => {
   return (

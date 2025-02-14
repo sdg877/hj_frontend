@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "../../App.css";
+import "../../styles/Admin.css"
 import Spinner from "../../site/components/Spinner";
 import "react-toastify/dist/ReactToastify.css";
 

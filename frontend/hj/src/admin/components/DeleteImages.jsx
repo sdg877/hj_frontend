@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../site/components/Spinner";
+import "../../styles/Admin.css"
 
 const DeleteImages = () => {
   const [images, setImages] = useState([]);
