@@ -3,19 +3,15 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Spinner from "../../site/components/Spinner";
-import "../../styles/Admin.css"
+import "../../styles/Admin.css";
 
 const DeleteImages = () => {
   const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     const fetchImages = async () => {
-      setLoading(true);
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/admin/thumbnails`
@@ -24,8 +20,6 @@ const DeleteImages = () => {
       } catch (err) {
         console.error("Error fetching images:", err);
         setError("Failed to load images");
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -63,10 +57,6 @@ const DeleteImages = () => {
     }
   };
 
-  const handleImageLoad = () => {
-    setImagesLoaded((prevCount) => prevCount + 1);
-  };
-
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
@@ -75,16 +65,6 @@ const DeleteImages = () => {
     selectedCategory === ""
       ? images
       : images.filter((image) => image.category === selectedCategory);
-
-  if (loading) {
-    return (
-      <div className="spinner-container">
-        <div className="spinner-wrapper">
-          <Spinner />
-        </div>
-      </div>
-    );
-  }
 
   if (error) return <p>{error}</p>;
 
@@ -113,11 +93,10 @@ const DeleteImages = () => {
               <div className="image-thumbnail-container">
                 <img
                   src={image.url}
-                  alt={`Image ${index}`}
+                  alt={image.category ? `${image.category} image` : `Image ${index}`}
                   className="image-thumbnail"
                   loading="lazy"
                   onError={(e) => console.error("Image load error:", e)}
-                  onLoad={handleImageLoad}
                 />
               </div>
               <p className="image-category">{image.category}</p>
@@ -131,12 +110,6 @@ const DeleteImages = () => {
           ))
         )}
       </div>
-
-      {imagesLoaded < filteredImages.length && (
-        <div>
-          <Spinner />
-        </div>
-      )}
 
       <ToastContainer
         position="top-right"
