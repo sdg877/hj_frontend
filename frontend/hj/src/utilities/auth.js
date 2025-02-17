@@ -1,5 +1,6 @@
 export const isAuthenticated = () => {
-    const token = localStorage.getItem("token"); 
-    return token !== null; 
-  };
-  
+  if (typeof window !== "undefined" && window.localStorage) {
+    return localStorage.getItem("token") !== null;
+  }
+  return false;
+};
