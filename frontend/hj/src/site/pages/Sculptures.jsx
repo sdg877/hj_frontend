@@ -3,7 +3,9 @@ import React from 'react';
 
 const Sculptures = () => {
   const sculpturesDescription = [
-    "For these sculptures, I’ve carved alabaster and limestone, assembled found objects from the shoreline, and sculpted in clay. While these sculptures are not for sale, I do accept commissions for sculptural works. Please get in touch if you would like a bespoke artwork."
+    "For these sculptures, I’ve carved alabaster and limestone, assembled found objects from the shoreline, and sculpted in clay.",
+    "While these sculptures are not for sale, I do accept commissions for sculptural works.",
+    <span>Please <a href='/contact' className='contact-link'>get in touch</a> if you would like a bespoke artwork.</span> // Corrected line
   ];
 
   return (
