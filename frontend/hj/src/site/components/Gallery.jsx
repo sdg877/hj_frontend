@@ -29,6 +29,8 @@ const Gallery = ({ endpoint, title, description }) => {
         const url = `${import.meta.env.VITE_BACKEND_URL}/gallery/${endpoint}`;
         const response = await axios.get(url);
 
+        console.log("Fetched images from API:", response.data);
+
         const processedImages = response.data.images.map((img) => ({
           ...img,
           text: img.text ? decodeURIComponent(img.text) : "",
