@@ -47,7 +47,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
-          path="/admin"
+          path="/dashboard"
           element={
             <PrivateRoute>
               <Dashboard />
@@ -55,7 +55,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/admin/images"
+          path="/dashboard/images"
           element={
             <PrivateRoute>
               <ImageDashboard />
@@ -63,7 +63,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/admin/addimages"
+          path="/dashboard/addimages"
           element={
             <PrivateRoute>
               <UploadImages />
@@ -71,7 +71,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/admin/news"
+          path="/dashboard/news"
           element={
             <PrivateRoute>
               <NewsDashboard />
@@ -79,7 +79,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/admin/thumbnails"
+          path="/dashboard/thumbnails"
           element={
             <PrivateRoute>
               <DeleteImages />
@@ -87,7 +87,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/admin/addnews"
+          path="/dashboard/addnews"
           element={
             <PrivateRoute>
               <NewsUpdate />
@@ -95,7 +95,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/admin/delete"
+          path="/dashboard/delete"
           element={
             <PrivateRoute>
               <DeleteNews />
@@ -107,7 +107,7 @@ function AppRoutes() {
         <Route path="/cards" element={<Cards />} />
         <Route path="/textiles" element={<Textiles />} />
         <Route path="/about" element={<AboutMe />} />
-        <Route path="/news" element={<News />} />
+        <Route path="/newsupdates" element={<News />} />
         <Route path="/commissions" element={<Commissions />} />
         <Route path="/contact" element={<ContactMe />} />
         <Route path="/" element={<Homepage />} />
