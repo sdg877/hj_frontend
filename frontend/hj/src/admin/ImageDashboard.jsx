@@ -9,7 +9,7 @@ const ImageDashboard = () => {
     <div className="container">
       <div className="header-container">
         <h2 className="news-page-title">Image Management</h2>
-        <Link to="/admin/news">
+        <Link to="/dashboard/news">
           <button className="dashboard-button-small">
             Go to News Dashboard
           </button>
