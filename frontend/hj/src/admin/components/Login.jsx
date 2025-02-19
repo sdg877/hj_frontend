@@ -21,7 +21,7 @@ const Login = () => {
       const token = response.data.token;
 
       localStorage.setItem("token", token);
-      navigate("/admin");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Login error:", error);
       alert("Invalid credentials");
