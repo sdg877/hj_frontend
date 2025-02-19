@@ -50,7 +50,7 @@ const NewsDashboard = () => {
 
   const handleNewsAdded = useCallback((newNewsItem) => {
     fetchNews();
-    toast.success("News added successfully!"); // Now the notification happens here only
+    toast.success("News added successfully!");
   }, [fetchNews]);
 
   const reversedNewsItems = [...newsItems].reverse();
@@ -59,7 +59,7 @@ const NewsDashboard = () => {
     <div className="container">
       <div className="header-container">
         <h2 className="news-page-title">News Management</h2>
-        <Link to="/admin/images">
+        <Link to="/dashboard/images">
           <button className="dashboard-button-small">
             Go to Image Dashboard
           </button>
