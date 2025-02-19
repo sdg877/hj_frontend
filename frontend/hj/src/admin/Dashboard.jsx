@@ -14,13 +14,13 @@ const Dashboard = () => {
       <div className="dashboard-container">
         <button
           className="dashboard-button"
-          onClick={() => navigate("/admin/images")}
+          onClick={() => navigate("/dashboard/images")}
         >
           Manage Images
         </button>
         <button
           className="dashboard-button"
-          onClick={() => navigate("/admin/news")}
+          onClick={() => navigate("/dashboard/news")}
         >
           Manage News
         </button>
