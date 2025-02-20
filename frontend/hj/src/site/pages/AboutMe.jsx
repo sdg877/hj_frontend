@@ -58,7 +58,7 @@ const AboutMe = () => {
             <br />
             St Donat’s Art Centre (2013): The Glamorgan Heritage Coast 
             <br />
-            Butetown History and Art Centre (2013)
+            Butetown History and Art Centre (2013): We Draw
             <br />
             Llanover Hall (September 2024): Open Exhibition 
             <br />
