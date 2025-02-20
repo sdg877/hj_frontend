@@ -11,6 +11,7 @@ const Navbar = () => {
   }
 
   const adminLinks = [
+    { to: "/", label: "Home" },
     { to: "/sculptures", label: "Sculptures" },
     { to: "/cards", label: "Cards & Prints" },
     { to: "/textiles", label: "Textiles" },
