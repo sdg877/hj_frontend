@@ -25,7 +25,7 @@ const Navbar = () => {
     { to: "/commissions", label: "Commissions" }
   ];
 
-  const isAdmin = location.pathname.startsWith("/admin");
+  const isAdmin = location.pathname.startsWith("/dashboard");
   const links = isAdmin ? adminLinks : [...adminLinks, ...generalLinks];
 
   const toggleMenu = () => {
